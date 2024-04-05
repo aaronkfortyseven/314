@@ -1,0 +1,116 @@
+*{
+    padding :0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+h1,h2{
+    font-family: sans-serif;
+    font-weight: 400;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+.flex{
+    display:flex;
+}
+.flex_space{
+    display:flex;
+    justify-content: space-between;
+}
+
+header{
+    height:10vh;
+    line-height: 10vh;
+    padding: 0 30px;
+}
+
+header img{
+    margin: 10px 0;
+}
+
+header ul{
+    display:inline-block;
+}
+
+header ul li{
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+header ul li a{
+    color: #000;
+    margin: 0 10px;
+    transition: 0.5s;
+}
+
+header ul li a:hover{
+    color: #1a11c4;
+}
+
+header i{
+    margin: 0 20px;
+}
+
+header button{
+    padding: 13px 40px;
+}
+
+header.navlinks span{
+    display:none;
+}
+
+.primary-btn{
+    padding: 15px 40px;
+    background: #1a11c4;
+    font-weight: bold;
+    color: white;
+}
+.hero{
+    height : 100%;
+    width : 100%;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4),rgba(255, 255, 255, 0.4)), url(uoww.png);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+
+.submit-btn{
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 24px;
+}
+table{
+    border: 1px solid black;
+    text-align: center;
+}
+
+th, td{
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #000000;
+}
+
+td{
+    background-color: #645de0;
+}
+
+table.center{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.btn{
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 24px;
+}

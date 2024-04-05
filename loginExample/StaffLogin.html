@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <title>Room Booking System</title>
+        <link rel="stylesheet" href="StaffLogin.css">
+        
+    </head>
+    <body>
+        <div class = "hero">
+            <header>
+                <div class ="content flex_space">
+                    <div class ="logo">
+                        <img src = "uowlogo.png" alt="uow logo" width ="200" height="70">
+                    </div>
+                    <div class = "navlinks">
+                        <ul id = "memulist">
+                            <li><a href ="CreateRoom.html">Create Room</a></li>
+                            <li><a href ="StaffLogin.html">View All Rooms</a></li>
+                            <li><i class ="fa fa-search"></i></li>
+                            <li><button class ="primary-btn" onclick ="window.location.href = 'LoginPage.html';">LOG OUT</li>
+                        </ul>
+                        <span class = "fa fa-bars" onclick="menutoggle()"></span>
+                    </div>
+                </div>
+            </header>
+        <section>
+            <table id ="MyTable" class ="center" width ="80%">
+                <tr>
+                    <th>Room</th>
+                    <th>Room Details</th>
+                    <th>Book by</th>
+                    <th>Status</th>
+                    <th>Modify</th>
+                </tr>
+                <tr>
+                    <td>Room 2</td>
+                    <td>Date: 23 May 2023, Tuesday<br><br>
+                        Time: 10:30AM - 12:30PM<br><br>
+                        Maximum number of people: 10<br><br>
+                        Price: $15 <br><br>
+                        Promo Code: BOOKNOW<br>
+                    </td>
+                    <td>Underwear</td>
+                    <td><p id = "para1">Room Closed</p></td>
+                    <td><button id = "btn" class ="btn">Launch Room</button><br><br>
+                        <button id = "modbtn" class ="btn" onclick="window.location.href ='ModifyBookingPage.html';">Modify Room</button><br><br>
+                        <button id = "delbtn" class ="btn" onclick ="deleteRow(this)">Delete Room</button><br><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Room 1</td>
+                    <td>Date: 24 May 2023, Wednesday<br><br>
+                        Time: 8:30AM - 10:30AM<br><br>
+                        Maximum number of people: 20<br><br>
+                        Price: $20 <br><br>
+                        Promo Code: BOOKMORNING<br>
+                    </td>
+                    <td>Underwear</td>
+                    <td><p id = "para2">Room Closed</p></td>
+                    <td><button id = "btn1" class ="btn">Launch Room</button><br><br>
+                        <button id = "modbtn" class ="btn" onclick="window.location.href ='ModifyBookingPage.html';">Modify Room</button><br><br>
+                        <button id = "delbtn" class ="btn" onclick ="deleteRow(this)">Delete Room</button><br><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Room 3</td>
+                    <td>Date: 25 May 2023, Thursday<br><br>
+                        Time: 1:30PM - 3:30PM<br><br>
+                        Maximum number of people: 35<br><br>
+                        Price: $50 <br><br>
+                        Promo Code: BOOKTHURSDAY<br>
+                    </td>
+                    <td>Underwear</td>
+                    <td><p id = "para3">Room Closed</p></td>
+                    <td><button id = "btn3" class ="btn">Launch Room</button><br><br>
+                        <button id = "modbtn" class ="btn" onclick="window.location.href ='ModifyBookingPage.html';">Modify Room</button><br><br>
+                        <button id = "delbtn" class ="btn" onclick ="deleteRow(this)">Delete Room</button><br><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Room 2</td>
+                    <td>Date: 26 May 2023, Friday<br><br>
+                        Time: 5:30PM - 7:30PM<br><br>
+                        Maximum number of people: 10<br><br>
+                        Price: $25<br><br>
+                        Promo Code: BOOKFRIDAY<br>
+                    </td>
+                    <td>Underwear</td>
+                    <td><p id = "para4">Room Closed</p></td>
+                    <td><button id = "btn4" class ="btn">Launch Room</button><br><br>
+                        <button id = "modbtn" class ="btn" onclick="window.location.href ='ModifyBookingPage.html';">Modify Room</button><br><br>
+                        <button id = "delbtn" class ="btn" onclick ="deleteRow(this)">Delete Room</button><br><br>
+
+                    </td>
+                </tr>
+
+            </table>
+            <script>
+                var para1 = document.getElementById("para1");
+                var para2 = document.getElementById("para2");
+                var para3 = document.getElementById("para3");
+                var para4 = document.getElementById("para4");
+                
+                const btn = document.getElementById('btn');
+                btn.addEventListener('click', function handleClick(){
+                    const initialtext = "Launch Room";
+
+                    if (btn.textContent.toLowerCase().includes(initialtext.toLowerCase())){
+                        btn.textContent = "Close Room";
+                        para1.innerText = "Room Launched";
+                    }
+                    else{
+                        btn.textContent = initialtext;
+                        para1.innerText = "Room Closed";
+                    }
+                });
+
+                btn1.addEventListener('click', function handleClick(){
+                    const initialtext = "Launch Room";
+
+                    if (btn1.textContent.toLowerCase().includes(initialtext.toLowerCase())){
+                        btn1.textContent = "Close Room";
+                        para2.innerText = "Room Launched";
+                    }
+                    else{
+                        btn1.textContent = initialtext;
+                        para2.innerText = "Room Closed";
+                    }
+                });
+
+                btn3.addEventListener('click', function handleClick(){
+                    const initialtext = "Launch Room";
+
+                    if (btn3.textContent.toLowerCase().includes(initialtext.toLowerCase())){
+                        btn3.textContent = "Close Room";
+                        para3.innerText = "Room Launched";
+                    }
+                    else{
+                        btn3.textContent = initialtext;
+                        para3.innerText = "Room Closed";
+                    }
+                });
+
+                btn4.addEventListener('click', function handleClick(){
+                    const initialtext = "Launch Room";
+
+                    if (btn4.textContent.toLowerCase().includes(initialtext.toLowerCase())){
+                        btn4.textContent = "Close Room";
+                        para4.innerText = "Room Launched";
+                    }
+                    else{
+                        btn4.textContent = initialtext;
+                        para4.innerText = "Room Closed";
+                    }
+                });
+
+                function deleteRow(r){
+                    let confirmAction = confirm("Are you sure you want to delete this?");
+                    if(confirmAction)
+                    {
+                        alert("Room deleted");
+                        var i = r.parentNode.parentNode.rowIndex;
+                        document.getElementById("MyTable").deleteRow(i);
+                    }
+                    else{
+                        alert("Room Not Deleted");
+                    }
+                }
+            </script>
+        </section>
+            
+    </div>
+    
+    </body>
+
+</html>

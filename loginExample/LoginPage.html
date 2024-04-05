@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Login Page</title>
+            <link rel="stylesheet" href ="loginstyle.css">
+    </head>
+    <body>
+            <div class = "hero">
+                <div class = "form-box">
+                    <div class = "button-box">
+                        <div id ="btn"></div>
+                        <button type ="button" class="toggle-btn" onclick ="userlogin()">User</button>
+                        <button type ="button" class="toggle-btn" onclick ="stafflogin()">Staff</button>
+
+                    </div>
+                    <form action ="userlogin.html" id ="user" class ="input-group" onsubmit="return authenticate()">
+                        <input id = "username" type="text" class="input-field" placeholder="User Id" required>
+                        <input id = "userpassword" type="password" class="input-field" placeholder="Enter Password" required>
+                        <input type ="checkbox" class ="check-box"><span>Remember Password</span>
+                        <button type ="submit" class ="submit-btn">Log in</button>
+                    </form>
+                    <form action = "stafflogin.html" id="staff" class ="input-group" onsubmit="return staffauthenticate()">
+                        <input id = "staffuser" type="text" class="input-field" placeholder="Staff Id" required>
+                        <input id = "staffpass" type="password" class="input-field" placeholder="Enter Password" required>
+                        <input type ="checkbox" class ="check-box"><span>Remember Password</span>
+                        <button type ="submit" class ="submit-btn">Log in</button>
+                    </form>
+                </div>
+                
+            </div>
+            <script>
+                var x = document.getElementById("user");
+                var y = document.getElementById("staff");
+                var z = document.getElementById("btn");
+
+                function stafflogin()
+                {
+                    x.style.left = "-400px";
+                    y.style.left = "50px";
+                    z.style.left = "110px";
+                }
+                function userlogin()
+                {
+                    x.style.left = "50px";
+                    y.style.left = "450px";
+                    z.style.left = "0px";
+                }
+                function authenticate()
+                {
+                    var authorised;
+
+                    var stdusername = document.getElementById("username").value;
+                    var stdpassword = document.getElementById("userpassword").value;
+
+                    if(stdusername == "user001" && stdpassword == "user001")
+                    {
+                        authorised = true;
+                    }
+                    else{
+                        authorised = false;
+                        alert ("Sorry, wrong user/password");
+                    }
+                    return authorised;
+                    
+                }
+                function staffauthenticate(){
+                    var staffautorised;
+                    var staffuser = document.getElementById("staffuser").value;
+                    var staffpass = document.getElementById("staffpass").value;
+
+                    if((staffuser == "staff001" && staffpass == "staff001"))
+                    {
+                        staffauthorised = true;
+                    }
+                    else if(staffuser == "admin001" && staffpass == "admin001"){
+                        document.getElementById("staff").action = "Superuser.html";
+                        staffauthorised = true;
+                    }
+                    else{
+                        staffauthorised = false;
+                        alert ("Sorry, wrong ur/password");
+                    }
+                    return staffauthorised;
+
+                }
+            </script>
+
+
+    </body>
+</html>
