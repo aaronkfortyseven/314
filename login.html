@@ -46,7 +46,123 @@
                     <button type ="submit" class ="submit-btn">Log in</button>
                 </form>
             </div>
+<!-- Main Content Updated 
+<main>
+        <div class = "hero">
+            <div class = "form-box">
+                <div class = "button-box">
+                    <div id ="btn"></div>
+                    <button type ="button" class="toggle-btn" onclick ="userlogin()">User</button>
+                    <button type ="button" class="toggle-btn" onclick ="realogin()">Real Estate Agent</button>
+                    <button type ="button" class="toggle-btn" onclick ="adminlogin()">System Admin</button>
+
+                </div>
+                <form action ="userlogin.html" id ="user" class ="input-group" onsubmit="return authenticate()">
+                    <input id = "username" type="text" class="input-field" placeholder="User Id" required>
+                    <input id = "userpassword" type="password" class="input-field" placeholder="Enter Password" required>
+                    <input type ="checkbox" class ="check-box"><span>Remember Password</span>
+                    <button type ="submit" class ="submit-btn">Log in</button>
+                </form>
+                <form action = "realogin.html" id="rea" class ="input-group" onsubmit="return reaauthenticate()">
+                    <input id = "reauser" type="text" class="input-field" placeholder="Rea Id" required>
+                    <input id = "reapass" type="password" class="input-field" placeholder="Enter Password" required>
+                    <input type ="checkbox" class ="check-box"><span>Remember Password</span>
+                    <button type ="submit" class ="submit-btn">Log in</button>
+                </form>
+                <form action = "adminlogin.html" id="admin" class ="input-group" onsubmit="return adminauthenticate()">
+                    <input id = "adminuser" type="text" class="input-field" placeholder="Admin Id" required>
+                    <input id = "adminpass" type="password" class="input-field" placeholder="Enter Password" required>
+                    <input type ="checkbox" class ="check-box"><span>Remember Password</span>
+                    <button type ="submit" class ="submit-btn">Log in</button>
+                </form>
+            </div>
             
+        </div>
+        <script>
+        var a = document.getElementById("user");
+        var b = document.getElementById("rea");
+        var c = document.getElementById("admin");
+        var d = document.getElementById("btn");
+
+function userlogin() {
+    a.style.display = "block";
+    b.style.display = "none";
+    c.style.display = "none";
+    d.style.width = "110px"; // Set width for user
+}
+
+function realogin() {
+    a.style.display = "50px";
+    b.style.display = "block";
+    c.style.display = "50px";
+    d.style.width = "250px"; // Set width for real estate agent
+}
+
+function adminlogin() {
+    a.style.display = "none";
+    b.style.display = "none";
+    c.style.display = "block";
+    d.style.width = "380px"; // Set width for admin
+}
+
+            function authenticate()
+            {
+                var authorised;
+
+                var Userusername = document.getElementById("username").value;
+                var Userpassword = document.getElementById("userpassword").value;
+
+                if(Userusername == "user001" && Userpassword == "user001")
+                {
+                    authorised = true;
+                }
+                else{
+                    authorised = false;
+                    alert ("Sorry, wrong user/password");
+                }
+                return authorised;
+                
+            }
+            function reaauthenticate(){
+                var reaautorised;
+                var reauser = document.getElementById("reauser").value;
+                var reapass = document.getElementById("reapass").value;
+
+                if((reauser == "rea001" && staffpass == "rea001"))
+                {
+                    reaauthorised = true;
+                }
+                else if(reauser == "rea001" && staffpass == "rea001"){
+                    document.getElementById("rea").action = "Superuser.html";
+                    reaauthorised = true;
+                }
+                else{
+                    reaauthorised = false;
+                    alert ("Sorry, wrong user/password");
+                }
+                return reaauthorised;
+
+            }
+            function adminauthenticate(){
+                var adminautorised;
+                var adminuser = document.getElementById("adminuser").value;
+                var adminpass = document.getElementById("adminpass").value;
+
+                if((adminuser == "admin001" && staffpass == "admin001"))
+                {
+                    adminauthorised = true;
+                }
+                else if(adminuser == "admin001" && staffpass == "admin001"){
+                    document.getElementById("admin").action = "Superuser.html";
+                    adminauthorised = true;
+                }
+                else{
+                    adminauthorised = false;
+                    alert ("Sorry, wrong user/password");
+                }
+                return adminauthorised;
+            }
+        </script> -->            
         </div>
         <script>
             var x = document.getElementById("user");
@@ -110,7 +226,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2022 Real Estate Website. All rights reserved.</p>
+        <p>&copy; 2024 Real Estate Website. All rights reserved.</p>
     </footer>
 </body>
 </html>
