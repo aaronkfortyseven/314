@@ -68,17 +68,20 @@ footer {
 
 
 /* Search bar */
-form {
-display: flex;
-justify-content: center;
-margin-bottom: 20px;
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
-form input[type="text"], form select {
+
+.search-form input[type="text"],
+.search-form select {
     width: 20%;
     padding: 10px;
     font-size: 16px;
 }
-form input[type="submit"] {
+
+.search-form input[type="submit"] {
     width: 10%;
     padding: 10px;
     font-size: 16px;
@@ -87,9 +90,11 @@ form input[type="submit"] {
     border: none;
     cursor: pointer;
 }
-form input[type="submit"]:hover {
+
+.search-form input[type="submit"]:hover {
     background-color: darkred;
 }
+
 
 
 
@@ -140,18 +145,23 @@ form input[type="submit"]:hover {
 
 
 /* login page */
-*{
-    margin : 0;
+/* Reset */
+* {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: sans-serif;
 }
-.hero{
-    height : 100%;
-    width : 100%;
-    background-color: #ffffff; /* Blue-grey theme */
+
+/* General styling */
+.hero {
+    height: 100%;
+    width: 120%;
+    background-color: #ffffff;
     position: absolute;
 }
-.form-box{
+
+.form-box {
     width: 380px;
     height: 480px;
     position: relative;
@@ -160,14 +170,18 @@ form input[type="submit"]:hover {
     padding: 5px;
     overflow: hidden;
 }
-.button-box{
-    width: 220px;
-    margin: 35px auto;
-    position: relative;
+
+.button-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     box-shadow: 0 0 20px 9px #ff61241f;
+    margin-top: 35px auto;
+    position: relative;
     border-radius: 30px;
 }
-.toggle-btn{
+
+.toggle-btn {
     padding: 10px 30px;
     cursor: pointer;
     background: transparent;
@@ -175,26 +189,34 @@ form input[type="submit"]:hover {
     outline: none;
     position: relative;
 }
-#btn{
-    top:0;
-    left:0;
+
+#btn {
     position: absolute;
-    width: 110px;
+    top: 0;
+    left: 0;
     height: 100%;
+    width: 25%;
+    overflow: hidden; /* Clip the overflow */
     background: linear-gradient(to right, #ff105f, #ffad06);
     border-radius: 30px;
-    transition: .5s;
+    transition: .2s;
 }
-.input-group{
-    top: 180px;
+
+
+.input-group {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 280px;
     transition: .5s;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
-.input-field{
-    width: 100%;
+
+.input-field {
+    width:100%; /* Adjusted width to match password input box */
     padding: 10px 0;
     margin:  5px 0;
     border-left:0;
@@ -205,7 +227,8 @@ form input[type="submit"]:hover {
     background: #ffffff;
     color: #050505; /* Text color */
 }
-.submit-btn{
+
+.submit-btn {
     width: 85%;
     padding: 10px 30px;
     cursor: pointer;
@@ -216,18 +239,19 @@ form input[type="submit"]:hover {
     outline: none;
     border-radius: 30px;
 }
-.check-box{
-    margin: 30px 10px 30px 0;
+
+.checkbox-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
 }
-span{
+
+.check-box {
+    margin-right: 10px; /* Add some space between checkbox and text */
+}
+
+span {
     color: #777;
     font-size: 12px;
-    bottom: 68px;
-    position: absolute;
 }
-#std{
-    left: 50px;
-}
-#staff{
-    left: 450px
-}
+
+
