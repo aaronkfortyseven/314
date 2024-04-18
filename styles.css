@@ -156,16 +156,16 @@ footer {
 /* General styling */
 .hero {
     height: 100%;
-    width: 120%;
+    width: 100%;
     background-color: #ffffff;
     position: absolute;
 }
 
 .form-box {
-    width: 380px;
+    width: 400px;
     height: 480px;
     position: relative;
-    margin: 6% auto;
+    margin: 2% auto;
     background: #fff;
     padding: 5px;
     overflow: hidden;
