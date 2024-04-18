@@ -1,7 +1,7 @@
 To do list
 1. Code out OOP backend in java (user super class etc.)
-2. setup mongoDB database with example entries (1 property 1 agent 1 user)
-3. Figure out image storing on mongoDB(or other methods)
+2. DONE - setup mongoDB database with example entries (1 property 1 agent 1 buyer 1 seller)
+3. Figure out image storing on mongoDB(or other methods/optional)
 4. Connect java code to DB and be able to retrieve info
 5. Connect html buttons to java code
 6. Test website storing/retrieving data from DB

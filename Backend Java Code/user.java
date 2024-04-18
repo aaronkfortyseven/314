@@ -65,6 +65,8 @@ public class Seller extends User {
     // Other methods related to Seller...
 }
 
+
+// put in another file property.java
 public class Property {
     private String propertyId;
     private String address;
