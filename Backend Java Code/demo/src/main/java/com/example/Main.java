@@ -10,8 +10,8 @@ import org.bson.Document;
 public class Main {
 
     public static void main(String[] args) {
-        MongoClientURI uri = new MongoClientURI("mongodb://localhost:27017");
-        MongoClient mongoClient = new MongoClient(uri);
+        ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
+        MongoClient mongoClient = MongoClients.create(connectionString);
         MongoDatabase database = mongoClient.getDatabase("314_db");
         MongoCollection<Document> collection = database.getCollection("users");
 
