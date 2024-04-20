@@ -19,7 +19,7 @@ public class Main {
             MongoCollection<Document> collection = database.getCollection("users");
             System.out.println("Got users collection");
 
-            String username = "er";
+            String username = "example_user";
             String password = "hashed_password";
 
             Document user = collection.find(new Document("username", username)).first();
