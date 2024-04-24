@@ -1,5 +1,4 @@
 package com.example;
-
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoClient;
 import com.mongodb.ConnectionString;
@@ -39,11 +38,9 @@ public class Main {
     public static boolean loginUser(MongoCollection<Document> collection, String username, String password) {
         Document user = collection.find(new Document("username", username)).first();
         System.out.println("User query result: " + user);
-
         if (user != null) {
             String dbPassword = user.getString("password");
             //System.out.println("Password from database: " + dbPassword);
-
             if (dbPassword.equals(password)) {
                 return true;
             }

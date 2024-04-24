@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Singapore's best real estate deals!</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="listings.html">Property Listings</a></li>
+            <li><a href="calculator.html">Mortgage Calculator</a></li>
+            <li><a href="reviews.html">Agent Reviews</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class = "hero">
+            <div class = "form-box">
+                <form action="LoginServlet" method="post" id="login" class="input-group">
+                    <input id="username" type="text" class="input-field" placeholder="User Id" required>
+                    <input id="password" type="password" class="input-field" placeholder="Enter Password" required>
+                    <input type="checkbox" class="check-box"><span>Remember Password</span>
+                    <button type="submit" class="submit-btn">Log in</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Real Estate Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
