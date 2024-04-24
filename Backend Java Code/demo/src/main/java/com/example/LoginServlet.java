@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         boolean loginSuccessful = loginUser(collection, username, password);
         if (loginSuccessful) {
             // Redirect to RealLogin.html
-            response.sendRedirect("RealLogin.html");
+            response.sendRedirect("ReaLogin.html");
         } else {
             // Redirect back to login.html with an error message
             request.setAttribute("errorMessage", "Invalid username or password.");
