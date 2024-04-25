@@ -12,7 +12,7 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import java.io.IOException;
 
-@WebServlet("/LoginServlet")
+@WebServlet("/myapp/LoginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         // Check if the login is successful
         boolean loginSuccessful = loginUser(collection, username, password);
         if (loginSuccessful) {
-            // Redirect to RealLogin.html
+            // Redirect to ReaLogin.html
             response.sendRedirect("ReaLogin.html");
         } else {
             // Redirect back to login.html with an error message
