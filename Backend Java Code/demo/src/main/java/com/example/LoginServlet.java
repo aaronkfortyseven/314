@@ -12,6 +12,7 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import java.io.IOException;
 
+
 @WebServlet("/myapp/LoginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +29,7 @@ public class LoginServlet extends HttpServlet {
         boolean loginSuccessful = loginUser(collection, username, password);
         if (loginSuccessful) {
             // Redirect to ReaLogin.html
-            response.sendRedirect("ReaLogin.html");
+            response.sendRedirect("/ReaLogin.html");
         } else {
             // Redirect back to login.html with an error message
             request.setAttribute("errorMessage", "Invalid username or password.");
@@ -47,4 +48,10 @@ public class LoginServlet extends HttpServlet {
         }
         return false;
     }
+
+    // @Override
+    // protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    //     // Forward the request to the login page
+    //     request.getRequestDispatcher("/login.html").forward(request, response);
+    // }
 }

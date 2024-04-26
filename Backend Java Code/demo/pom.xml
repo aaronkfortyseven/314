@@ -26,6 +26,7 @@
                     <target>17</target>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -34,6 +35,16 @@
                     <mainClass>com.example.Main</mainClass>
                 </configuration>
             </plugin>
+
+        <plugin>
+            <groupId>org.apache.tomcat.maven</groupId>
+            <artifactId>tomcat7-maven-plugin</artifactId>
+            <version>2.2</version>
+            <configuration>
+                <path>/</path>
+            </configuration>
+        </plugin>
+        
         </plugins>
     </build>
 
