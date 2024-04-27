@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Agent Dashboard</title>
+    <link rel="stylesheet" href="ReaStyle.css">
+</head>
+<body>
+    <header>
+        <h1>Real Estate Agent Dashboard</h1>
+        <button id="logoutBtn">Logout</button>
+        <button id="backToMainBtn">Back to Main</button> <!-- New button for going back to the main page -->
+    </header>
+
+    <!-- Search bar and buttons container -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by property title...">
+        <button id="searchBtn">Search</button>
+        <div class="button-container">
+            <button id="addPropertyBtn">Add Property</button>
+            <button id="viewAllPropertiesBtn">View All Properties</button>
+            <button id="viewFeedbackBtn">View Ratings & Reviews</button>
+        </div>
+    </div>
+
+    <div id="dashboard" class="dashboard"></div>
+
+    <!-- Modal for viewing ratings -->
+    <div id="ratingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Ratings</h2>
+            <div id="ratingsList"></div>
+        </div>
+    </div>
+
+    <!-- Modal for viewing reviews -->
+    <div id="reviewsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Reviews</h2>
+            <div id="reviewsList"></div>
+        </div>
+    </div>
+    <script src="updateProperty.js"></script>
+    <script src="ReaLogin.js"></script>
+</body>
+</html>
+
+
+

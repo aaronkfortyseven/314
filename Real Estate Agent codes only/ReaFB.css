@@ -1,0 +1,38 @@
+/* Agent reviews */
+.agent {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 30%;
+    float: left;
+    margin-right: 1.5%;
+    box-sizing: border-box;
+}
+
+.agent img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.agent h3,
+.agent p {
+    margin: 0;
+}
+
+.agent p {
+    color: #666;
+}
+
+.reviews {
+    margin-top: 10px;
+}
+
+.review h4 {
+    margin: 0;
+}
+
+.review p {
+    margin: 5px 0 0;
+    color: #666;
+}
