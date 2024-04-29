@@ -12,46 +12,23 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import java.io.IOException;
 
-
 @WebServlet("/myapp/LoginServlet")
 public class LoginServlet extends HttpServlet {
+    private UserService userService = new UserService();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        // Connect to MongoDB and get the users collection
-        ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
-        MongoClient mongoClient = MongoClients.create(connectionString);
-        MongoDatabase database = mongoClient.getDatabase("314_db");
-        MongoCollection<Document> collection = database.getCollection("users");
-
-        // Check if the login is successful
-        boolean loginSuccessful = loginUser(collection, username, password);
-        if (loginSuccessful) {
-            // Redirect to ReaLogin.html
+        User user = userService.login(username, password);
+        if (user != null) {
+            // Login successful
+            request.getSession().setAttribute("user", user);
             response.sendRedirect("/ReaLogin.html");
         } else {
-            // Redirect back to login.html with an error message
+            // Login failed
             request.setAttribute("errorMessage", "Invalid username or password.");
             request.getRequestDispatcher("/login.html").forward(request, response);
         }
     }
-
-    // loginUser method
-    public static boolean loginUser(MongoCollection<Document> collection, String username, String password) {
-        Document user = collection.find(new Document("username", username)).first();
-        if (user != null) {
-            String dbPassword = user.getString("password");
-            if (dbPassword.equals(password)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // @Override
-    // protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    //     // Forward the request to the login page
-    //     request.getRequestDispatcher("/login.html").forward(request, response);
-    // }
 }

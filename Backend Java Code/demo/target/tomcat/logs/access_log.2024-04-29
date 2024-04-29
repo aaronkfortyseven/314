@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:15:56:19 +0800] "GET /login.html HTTP/1.1" 304 - http-bio-8080-exec-1 145
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:15:56:20 +0800] "GET /styles.css HTTP/1.1" 304 - http-bio-8080-exec-3 5
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:15:56:33 +0800] "POST /myapp/LoginServlet HTTP/1.1" 302 - http-bio-8080-exec-5 685
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:15:56:33 +0800] "GET /ReaLogin.html HTTP/1.1" 304 - http-bio-8080-exec-7 4
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:15:56:33 +0800] "GET /ReaLogin.css HTTP/1.1" 304 - http-bio-8080-exec-6 2
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:15:56:33 +0800] "GET /ReaLogin.js HTTP/1.1" 304 - http-bio-8080-exec-9 5
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:15:56:33 +0800] "GET /updateProperty.js HTTP/1.1" 404 985 http-bio-8080-exec-8 15
