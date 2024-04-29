@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Property</title>
+    <link rel="stylesheet" href="updateProperty.css">
+</head>
+<body>
+    <h1>Update Property</h1>
+    <form id="updatePropertyForm">
+        <!-- Form fields to update property -->
+        <input type="text" id="newTitle" placeholder="Enter new title"><br>
+        <input type="text" id="newDescription" placeholder="Enter new description"><br>
+        <input type="text" id="newPrice" placeholder="Enter new price"><br>
+        <input type="text" id="newStatus" placeholder="Enter new status"><br>
+        <button type="submit">Update</button>
+    </form>
+
+    <script>
+        // Get property id from query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        const updatePropertyForm = document.getElementById('updatePropertyForm');
+        updatePropertyForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get updated property information from form
+            const newTitle = document.getElementById('newTitle').value.trim();
+            const newDescription = document.getElementById('newDescription').value.trim();
+            const newPrice = document.getElementById('newPrice').value.trim();
+            const newStatus = document.getElementById('newStatus').value.trim();
+
+            // Send updated information back to main page using query parameters
+            window.location.href = `ReaLogin.html?update=true&id=${id}&newTitle=${encodeURIComponent(newTitle)}&newDescription=${encodeURIComponent(newDescription)}&newPrice=${encodeURIComponent(newPrice)}&newStatus=${encodeURIComponent(newStatus)}`;
+        });
+    </script>
+</body>
+</html>
