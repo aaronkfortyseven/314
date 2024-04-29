@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoClient;
 import com.mongodb.ConnectionString;
@@ -27,8 +28,9 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/ReaLogin.html");
         } else {
             // Login failed
-            request.setAttribute("errorMessage", "Invalid username or password.");
-            request.getRequestDispatcher("/login.html").forward(request, response);
+            HttpSession session = request.getSession();
+            session.setAttribute("loginError", "true");
+            response.sendRedirect("/login.jsp");
         }
     }
 }

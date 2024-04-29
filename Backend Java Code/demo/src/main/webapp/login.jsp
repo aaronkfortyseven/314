@@ -19,7 +19,7 @@
             <li><a href="listings.html">Property Listings</a></li>
             <li><a href="calculator.html">Mortgage Calculator</a></li>
             <li><a href="reviews.html">Agent Reviews</a></li>
-            <li><a href="login.html">Login</a></li>
+            <li><a href="login.jsp">Login</a></li>
         </ul>
     </nav>
 
@@ -43,16 +43,18 @@
         <p>&copy; 2024 Real Estate Website. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for showing a popup when login is unsuccessful -->
-    <script>
-        // Check if the loginError flag is present in the session
-        var loginError = "${sessionScope.loginError}";
-        if (loginError === "true") {
-            // Show a popup
-            alert("Invalid username or password.");
-            // Remove the flag from the session
-            sessionStorage.removeItem("loginError");
-        }
-    </script>
+<!-- JavaScript for showing a popup when login is unsuccessful -->
+<script>
+    // Check if the loginError flag is present in the session
+    var loginError = "<%=session.getAttribute("loginError")%>";
+    if (loginError && loginError === "true") {
+        // Show a popup
+        alert("Invalid username or password.");
+        // Remove the flag from the session
+        <%
+            session.removeAttribute("loginError");
+        %>
+    }
+</script>
 </body>
 </html>
