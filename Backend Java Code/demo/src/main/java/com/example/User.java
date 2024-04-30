@@ -10,4 +10,7 @@ public class User {
     }
 
     // getters and setters
+    public String getUsername() {
+        return this.username;
+    }
 }

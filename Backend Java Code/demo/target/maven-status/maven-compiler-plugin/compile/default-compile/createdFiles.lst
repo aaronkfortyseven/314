@@ -1,5 +1,7 @@
-com/example/LoginServlet.class
-com/example/Main.class
 com/example/User.class
 com/example/Agent.class
+com/example/AgentServlet.class
+com/example/LoginServlet.class
+com/example/AgentService.class
+com/example/Main.class
 com/example/UserService.class

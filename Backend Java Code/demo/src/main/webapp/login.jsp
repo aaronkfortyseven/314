@@ -32,7 +32,7 @@
                     <input id="username" name="username" type="text" class="input-field" placeholder="User Id" required>
                     <input id="password" name="password" type="password" class="input-field" placeholder="Enter Password" required>
                     <input type="checkbox" class="check-box"><span>Remember Password</span>
-                    <button type="submit" class="submit-btn">Log in</button>
+                    <button type="submit" class="submit-btn" onclick="storeUsername()">Log in</button>
                 </form>
             </div>
         </div>
@@ -54,6 +54,14 @@
         <%
             session.removeAttribute("loginError");
         %>
+    }
+</script>
+
+<!-- Storing username in session-->
+<script>
+    function storeUsername() {
+        var username = document.getElementById('username').value;
+        sessionStorage.setItem('username', username);
     }
 </script>
 </body>

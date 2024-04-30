@@ -1,30 +1,22 @@
-// Sample properties data
-let properties = [
-    {
-        id: 1,
-        title: "Beautiful Home",
-        description: "A stunning home with modern amenities.",
-        price: "$500,000",
-        status: "For Sale"
-    },
-    {
-        id: 2,
-        title: "Cozy Cottage",
-        description: "Charming cottage in a peaceful neighborhood.",
-        price: "$300,000",
-        status: "Sold"
-    },
-    // Add more properties as needed
-];
+//current session's username
+const username = sessionStorage.getItem('username');
+
+// Function to fetch properties from the server
+async function fetchProperties() {
+    const response = await fetch(`/myapp/AgentServlet?username=${username}`);
+    const properties = await response.json();
+    console.log(properties);
+    return properties;
+}
 
 // Function to display properties on the dashboard
-function displayProperties(filteredProperties = null) {
+async function displayProperties() {
     const dashboard = document.getElementById('dashboard');
     dashboard.innerHTML = ''; // Clear existing content
     
-    const propertiesToDisplay = filteredProperties ? filteredProperties : properties;
+    const properties = await fetchProperties();
 
-    propertiesToDisplay.forEach(property => {
+    properties.forEach(property => {
         const propertyDiv = document.createElement('div');
         propertyDiv.classList.add('property');
 
@@ -42,8 +34,9 @@ function displayProperties(filteredProperties = null) {
 }
 
 // Function to search properties based on title
-function searchProperties() {
+async function searchProperties() {
     const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
+    const properties = await fetchProperties();
     const filteredProperties = properties.filter(property => property.title.toLowerCase().startsWith(searchValue));
     
     if (filteredProperties.length > 0) {
@@ -54,40 +47,53 @@ function searchProperties() {
     }
 }
 
-
 // Function to remove a property
-function removeProperty(id) {
-    const index = properties.findIndex(property => property.id === id);
-    if (index !== -1) {
-        properties.splice(index, 1);
-        displayProperties(); // Refresh dashboard
+async function removeProperty(id) {
+    const response = await fetch(`/myapp/AgentServlet?propertyId=${id}`, {
+        method: 'DELETE',
+    });
+
+    if (response.ok) {
+        // If the server responds with a success status, remove the property from the page
+        const propertyDiv = document.getElementById(`property-${id}`);
+        propertyDiv.remove();
+    } else {
+        alert('Failed to remove property.');
     }
 }
 
-// Function to update a property
-function updateProperty(id) {
-    // Redirect user to updateProperty.html with property id as query parameter
-    window.location.href = `updateProperty.html?id=${id}`;
-}
-
-
 // Function to add a new property
-function addProperty() {
+async function addProperty() {
     const newProperty = {
-        id: properties.length + 1,
-        title: "New Property",
-        description: "Enter description here",
-        price: "$0",
-        status: "For Sale"
+        title: 'New Property',
+        description: 'This is a new property.',
+        price: 100000,
+        status: 'For Sale',
+        // Add other property details here
     };
-    properties.push(newProperty);
-    displayProperties(); // Refresh dashboard
+
+    const response = await fetch(`/myapp/AgentServlet`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newProperty),
+    });
+
+    if (response.ok) {
+        // If the server responds with a success status, add the new property to the page
+        displayProperties();
+    } else {
+        alert('Failed to add property.');
+    }
 }
 
 // Sample function to simulate logout
 function logout() {
+    //clears session username
+    sessionStorage.removeItem('username');
     // Redirect the user to the login page
-    window.location.href = "login.html";
+    window.location.href = "login.jsp";
 }
 
 // Event listener for logout button
@@ -106,4 +112,3 @@ document.getElementById('viewAllPropertiesBtn').addEventListener('click', functi
 
 // Display initial properties on page load
 displayProperties();
-
