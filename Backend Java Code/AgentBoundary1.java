@@ -14,28 +14,15 @@ import com.google.gson.Gson;
 
 @WebServlet("/myapp/AgentBoundary")
 public class AgentBoundary extends HttpServlet {
-    private ViewPropertiesController viewPropertiesController;
-    private RemovePropertyController removePropertyController;
-
-    public AgentBoundary() {
-        this.viewPropertiesController = new ViewPropertiesController();
-        this.removePropertyController = new RemovePropertyController();
-    }
+    private AgentController agentController = new AgentController();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
 
-        List<Document> properties = viewPropertiesController.execute(username);
+        List<Document> properties = agentController.getProperties(username);
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print(new Gson().toJson(properties));
         out.flush();
-    }
-
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String propertyTitle = request.getParameter("propertyTitle");
-
-        removePropertyController.execute(username, propertyTitle);
     }
 }

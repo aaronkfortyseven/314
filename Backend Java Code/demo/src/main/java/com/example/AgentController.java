@@ -12,28 +12,19 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
 public class AgentController {
-    private MongoCollection<Document> collection;
+    private ViewPropertiesController viewPropertiesController;
+    private RemovePropertyController removePropertyController;
 
     public AgentController() {
-        ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
-        MongoClient mongoClient = MongoClients.create(connectionString);
-        MongoDatabase database = mongoClient.getDatabase("314_db");
-        this.collection = database.getCollection("users");
+        this.viewPropertiesController = new ViewPropertiesController();
+        this.removePropertyController = new RemovePropertyController();
     }
 
-    public List<Document> getProperties(String username) {
-        // Get the properties of the agent
-        Document user = collection.find(new Document("username", username)).first();
-        if (user != null) {
-            return (List<Document>) user.get("listings");
-        }
-        return new ArrayList<>();  // return an empty list if no agent is found
+    public List<Document> viewProperties(String username) {
+        return viewPropertiesController.execute(username);
     }
-// class of it's own. boundary calling controller which is unique to the entity. 
+
     public void removeProperty(String username, String propertyId) {
-        collection.updateOne(
-            Filters.eq("username", username), 
-            Updates.pull("listings", new Document("id", propertyId))
-        );
+        removePropertyController.execute(username, propertyId);
     }
 }

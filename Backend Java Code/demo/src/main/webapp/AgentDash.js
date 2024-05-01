@@ -25,8 +25,8 @@ async function displayProperties() {
             <p>Description: ${property.description}</p>
             <p>Price: ${property.price}</p>
             <p>Status: ${property.status}</p>
-            <button onclick="removeProperty(${property.id})">Remove</button>
-            <button onclick="updateProperty(${property.id})">Update</button>
+            <button onclick="removeProperty('${property.title}')">Remove</button>
+            <button onclick="updateProperty('${property.title}')">Update</button>
         `;
 
         dashboard.appendChild(propertyDiv);
@@ -48,14 +48,14 @@ async function searchProperties() {
 }
 
 // Function to remove a property
-async function removeProperty(id) {
-    const response = await fetch(`/myapp/AgentBoundary?propertyId=${id}`, {
+async function removeProperty(title) {
+    const response = await fetch(`/myapp/AgentBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
         method: 'DELETE',
     });
 
     if (response.ok) {
         // If the server responds with a success status, remove the property from the page
-        const propertyDiv = document.getElementById(`property-${id}`);
+        const propertyDiv = document.querySelector(`div.property:contains('${title}')`);
         propertyDiv.remove();
     } else {
         alert('Failed to remove property.');
