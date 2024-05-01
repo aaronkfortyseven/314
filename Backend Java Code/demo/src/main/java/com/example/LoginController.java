@@ -8,7 +8,7 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import com.example.User; 
 
-public class UserService {
+public class LoginController {
     public User login(String username, String password) {
         // Connect to MongoDB and get the users collection
         ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");

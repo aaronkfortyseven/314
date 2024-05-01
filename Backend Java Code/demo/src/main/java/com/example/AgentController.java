@@ -8,20 +8,32 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import java.util.List;
 import java.util.ArrayList;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 
-public class AgentService {
-    public List<Document> getProperties(String username) {
-        // Connect to MongoDB and get the users collection
+public class AgentController {
+    private MongoCollection<Document> collection;
+
+    public AgentController() {
         ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
         MongoClient mongoClient = MongoClients.create(connectionString);
         MongoDatabase database = mongoClient.getDatabase("314_db");
-        MongoCollection<Document> collection = database.getCollection("users");
+        this.collection = database.getCollection("users");
+    }
 
+    public List<Document> getProperties(String username) {
         // Get the properties of the agent
         Document user = collection.find(new Document("username", username)).first();
         if (user != null) {
             return (List<Document>) user.get("listings");
         }
         return new ArrayList<>();  // return an empty list if no agent is found
+    }
+// class of it's own. boundary calling controller which is unique to the entity. 
+    public void removeProperty(String username, String propertyId) {
+        collection.updateOne(
+            Filters.eq("username", username), 
+            Updates.pull("listings", new Document("id", propertyId))
+        );
     }
 }

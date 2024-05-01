@@ -3,7 +3,7 @@ const username = sessionStorage.getItem('username');
 
 // Function to fetch properties from the server
 async function fetchProperties() {
-    const response = await fetch(`/myapp/AgentServlet?username=${username}`);
+    const response = await fetch(`/myapp/AgentBoundary?username=${username}`);
     const properties = await response.json();
     console.log(properties);
     return properties;
@@ -49,7 +49,7 @@ async function searchProperties() {
 
 // Function to remove a property
 async function removeProperty(id) {
-    const response = await fetch(`/myapp/AgentServlet?propertyId=${id}`, {
+    const response = await fetch(`/myapp/AgentBoundary?propertyId=${id}`, {
         method: 'DELETE',
     });
 
@@ -72,7 +72,7 @@ async function addProperty() {
         // Add other property details here
     };
 
-    const response = await fetch(`/myapp/AgentServlet`, {
+    const response = await fetch(`/myapp/AgentBoundary`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

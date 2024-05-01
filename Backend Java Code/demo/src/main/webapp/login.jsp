@@ -28,7 +28,7 @@
         <div class = "hero">
 
             <div class = "form-box">
-                <form action="/myapp/LoginServlet" method="post" id="login" class="input-group">
+                <form action="/myapp/LoginBoundary" method="post" id="login" class="input-group">
                     <input id="username" name="username" type="text" class="input-field" placeholder="User Id" required>
                     <input id="password" name="password" type="password" class="input-field" placeholder="Enter Password" required>
                     <input type="checkbox" class="check-box"><span>Remember Password</span>
