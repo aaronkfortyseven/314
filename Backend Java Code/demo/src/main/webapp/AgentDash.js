@@ -1,7 +1,7 @@
 //current session's username
 const username = sessionStorage.getItem('username');
 
-// Function to fetch properties from the server
+// FETCH from the server
 async function fetchProperties() {
     console.log('fetchProperties called');
     const response = await fetch(`/myapp/ViewPropertyBoundary?username=${username}`);
@@ -10,7 +10,7 @@ async function fetchProperties() {
     return properties;
 }
 
-// Function to display properties on the dashboard
+// DISPLAY
 async function displayProperties() {
     console.log('displayProperties called');
     const dashboard = document.getElementById('dashboard');
@@ -28,14 +28,15 @@ async function displayProperties() {
             <p>Price: ${property.price}</p>
             <p>Status: ${property.status}</p>
             <button onclick="removeProperty('${property.title}')">Remove</button>
-            <button onclick="updateProperty('${property.title}')">Update</button>
+            <button onclick="showUpdatePropertyForm('${property.title}')">Update</button>
+
         `;
 
         dashboard.appendChild(propertyDiv);
     });
 }
 
-// Function to search properties based on title
+// SEARCH
 async function searchProperties() {
     const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
     const properties = await fetchProperties();
@@ -49,7 +50,7 @@ async function searchProperties() {
     }
 }
 
-// Function to remove a property
+// REMOVE
 async function removeProperty(title) {
     const response = await fetch(`/myapp/RemovePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
         method: 'DELETE',
@@ -64,13 +65,15 @@ async function removeProperty(title) {
     }
 }
 
-// Function to show the add property form
+// ADD
 function showAddPropertyForm() {
     document.getElementById('addPropertyForm').style.display = 'block';
-    document.getElementById('submitButton').addEventListener('click', addProperty);
+    document.getElementById('addSubmitButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        addProperty();
+    });
 }
 
-// ADD a new property
 async function addProperty(event) {
 
 
@@ -79,7 +82,7 @@ async function addProperty(event) {
         description: document.getElementById('description').value,
         price: document.getElementById('price').value,
         location: document.getElementById('location').value,
-        type: document.getElementById('type').value,
+        type: document.getElementById('status').value,
         agent: document.getElementById('agent').value,
     };
 
@@ -92,9 +95,60 @@ async function addProperty(event) {
     });
 
     if (response.ok) {
+        document.getElementById('updatePropertyForm').style.display = 'none';
         displayProperties();
     } else {
         alert('Failed to add property.');
+    }
+}
+
+// UPDATE
+async function showUpdatePropertyForm(title) {
+    // Fetch the data for the specific property
+    const response = await fetch(`/myapp/ViewPropertyBoundary?username=${username}&propertyTitle=${encodeURIComponent(title)}`);
+    const property = await response.json();
+
+    // Pre-fill the form with the current property values
+    document.getElementById('title').value = property.title;
+    document.getElementById('description').value = property.description;
+    document.getElementById('price').value = property.price;
+    document.getElementById('location').value = property.location;
+    document.getElementById('status').value = property.status;
+    document.getElementById('agent').value = property.agent;
+
+    // Show the form
+    document.getElementById('updatePropertyForm').style.display = 'block';
+
+    // Add an event listener to the submit button
+    document.getElementById('updateSubmitButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        updateProperty(title);
+    });
+}
+
+async function updateProperty(title) {
+    const updatedProperty = {
+        title: document.getElementById('updateTitle').value,
+        description: document.getElementById('updateDescription').value,
+        price: document.getElementById('updatePrice').value,
+        location: document.getElementById('updateLocation').value,
+        status: document.getElementById('updateStatus').value,
+        agent: document.getElementById('updateAgent').value,
+    };
+
+    const response = await fetch(`/myapp/UpdatePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedProperty),
+    });
+
+    if (response.ok) {
+        document.getElementById('updatePropertyForm').style.display = 'none';
+        displayProperties();
+    } else {
+        alert('Failed to update property.');
     }
 }
 
