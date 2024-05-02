@@ -12,14 +12,18 @@ import java.util.List;
 import java.io.PrintWriter;
 import com.google.gson.Gson;
 
-@WebServlet("/myapp/AgentBoundary")
-public class AgentBoundary extends HttpServlet {
-    private AgentController agentController = new AgentController();
+@WebServlet("/myapp/ViewPropertyBoundary")
+public class ViewPropertyBoundary extends HttpServlet {
+    private ViewPropertyController viewPropertyController;
+
+    public ViewPropertyBoundary() {
+        this.viewPropertyController = new ViewPropertyController();
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
 
-        List<Document> properties = agentController.getProperties(username);
+        List<Document> properties = viewPropertyController.execute(username);
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print(new Gson().toJson(properties));

@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
-public class ViewPropertiesController {
+public class ViewPropertyController {
     private MongoCollection<Document> collection;
 
-    public ViewPropertiesController() {
+    public ViewPropertyController() {
         ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
         MongoClient mongoClient = MongoClients.create(connectionString);
         MongoDatabase database = mongoClient.getDatabase("314_db");

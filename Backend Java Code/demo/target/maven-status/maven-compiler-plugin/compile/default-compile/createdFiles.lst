@@ -1,9 +1,11 @@
-com/example/AgentBoundary.class
 com/example/User.class
 com/example/Agent.class
 com/example/LoginBoundary.class
+com/example/RemovePropertyBoundary.class
+com/example/ViewPropertyController.class
+CreatePropertyController.class
+CreatePropertyBoundary.class
 com/example/LoginController.class
 com/example/Main.class
-com/example/AgentController.class
-com/example/ViewPropertiesController.class
+com/example/ViewPropertyBoundary.class
 com/example/RemovePropertyController.class

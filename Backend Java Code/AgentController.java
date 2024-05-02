@@ -12,16 +12,16 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
 public class AgentController {
-    private ViewPropertiesController viewPropertiesController;
+    private ViewPropertyController viewPropertyController;
     private RemovePropertyController removePropertyController;
 
     public AgentController() {
-        this.viewPropertiesController = new ViewPropertiesController();
+        this.viewPropertyController = new ViewPropertyController();
         this.removePropertyController = new RemovePropertyController();
     }
 
-    public List<Document> viewProperties(String username) {
-        return viewPropertiesController.execute(username);
+    public List<Document> viewProperty(String username) {
+        return viewPropertyController.execute(username);
     }
 
     public void removeProperty(String username, String propertyId) {

@@ -3,7 +3,8 @@ const username = sessionStorage.getItem('username');
 
 // Function to fetch properties from the server
 async function fetchProperties() {
-    const response = await fetch(`/myapp/AgentBoundary?username=${username}`);
+    console.log('fetchProperties called');
+    const response = await fetch(`/myapp/ViewPropertyBoundary?username=${username}`);
     const properties = await response.json();
     console.log(properties);
     return properties;
@@ -11,6 +12,7 @@ async function fetchProperties() {
 
 // Function to display properties on the dashboard
 async function displayProperties() {
+    console.log('displayProperties called');
     const dashboard = document.getElementById('dashboard');
     dashboard.innerHTML = ''; // Clear existing content
     
@@ -43,36 +45,45 @@ async function searchProperties() {
         displayProperties(filteredProperties); // Display only the found properties
     } else {
         alert("Property not found.");
-        displayProperties(); // Display all properties if no match is found
+        displayProperties();
     }
 }
 
 // Function to remove a property
 async function removeProperty(title) {
-    const response = await fetch(`/myapp/AgentBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
+    const response = await fetch(`/myapp/RemovePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
         method: 'DELETE',
     });
 
     if (response.ok) {
-        // If the server responds with a success status, remove the property from the page
         const propertyDiv = document.querySelector(`div.property:contains('${title}')`);
         propertyDiv.remove();
+        displayProperties();
     } else {
         alert('Failed to remove property.');
     }
 }
 
-// Function to add a new property
-async function addProperty() {
+// Function to show the add property form
+function showAddPropertyForm() {
+    document.getElementById('addPropertyForm').style.display = 'block';
+    document.getElementById('submitButton').addEventListener('click', addProperty);
+}
+
+// ADD a new property
+async function addProperty(event) {
+
+
     const newProperty = {
-        title: 'New Property',
-        description: 'This is a new property.',
-        price: 100000,
-        status: 'For Sale',
-        // Add other property details here
+        title: document.getElementById('title').value,
+        description: document.getElementById('description').value,
+        price: document.getElementById('price').value,
+        location: document.getElementById('location').value,
+        type: document.getElementById('type').value,
+        agent: document.getElementById('agent').value,
     };
 
-    const response = await fetch(`/myapp/AgentBoundary`, {
+    const response = await fetch(`/myapp/CreatePropertyBoundary?username=${encodeURIComponent(username)}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -81,34 +92,32 @@ async function addProperty() {
     });
 
     if (response.ok) {
-        // If the server responds with a success status, add the new property to the page
         displayProperties();
     } else {
         alert('Failed to add property.');
     }
 }
 
-// Sample function to simulate logout
 function logout() {
     //clears session username
     sessionStorage.removeItem('username');
-    // Redirect the user to the login page
     window.location.href = "login.jsp";
 }
 
+// Display initial properties on page load
+displayProperties();
+
 // Event listener for logout button
 document.getElementById('logoutBtn').addEventListener('click', logout);
-
-// Event listener for add property button
-document.getElementById('addPropertyBtn').addEventListener('click', addProperty);
 
 // Event listener for search button
 document.getElementById('searchBtn').addEventListener('click', searchProperties);
 
 // Event listener for view all properties button
 document.getElementById('viewAllPropertiesBtn').addEventListener('click', function() {
-    displayProperties(); // Display all properties
+    displayProperties();
 });
 
-// Display initial properties on page load
-displayProperties();
+// Event listener for add property button
+document.getElementById('addPropertyBtn').addEventListener('click', showAddPropertyForm);
+
