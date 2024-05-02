@@ -19,7 +19,7 @@
             <li><a href="listings.html">Property Listings</a></li>
             <li><a href="calculator.html">Mortgage Calculator</a></li>
             <li><a href="reviews.html">Agent Reviews</a></li>
-            <li><a href="login.html">Login</a></li>
+            <li><a href="login.jsp">Login</a></li>
         </ul>
     </nav>
 
@@ -28,11 +28,11 @@
         <div class = "hero">
 
             <div class = "form-box">
-                <form action="/myapp/LoginServlet" method="post" id="login" class="input-group">
+                <form action="/myapp/LoginBoundary" method="post" id="login" class="input-group">
                     <input id="username" name="username" type="text" class="input-field" placeholder="User Id" required>
                     <input id="password" name="password" type="password" class="input-field" placeholder="Enter Password" required>
                     <input type="checkbox" class="check-box"><span>Remember Password</span>
-                    <button type="submit" class="submit-btn">Log in</button>
+                    <button type="submit" class="submit-btn" onclick="storeUsername()">Log in</button>
                 </form>
             </div>
         </div>
@@ -43,16 +43,26 @@
         <p>&copy; 2024 Real Estate Website. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for showing a popup when login is unsuccessful -->
-    <script>
-        // Check if the loginError flag is present in the session
-        var loginError = "${sessionScope.loginError}";
-        if (loginError === "true") {
-            // Show a popup
-            alert("Invalid username or password.");
-            // Remove the flag from the session
-            sessionStorage.removeItem("loginError");
-        }
-    </script>
+<!-- JavaScript for showing a popup when login is unsuccessful -->
+<script>
+    // Check if the loginError flag is present in the session
+    var loginError = "<%=session.getAttribute("loginError")%>";
+    if (loginError && loginError === "true") {
+        // Show a popup
+        alert("Invalid username or password.");
+        // Remove the flag from the session
+        <%
+            session.removeAttribute("loginError");
+        %>
+    }
+</script>
+
+<!-- Storing username in session-->
+<script>
+    function storeUsername() {
+        var username = document.getElementById('username').value;
+        sessionStorage.setItem('username', username);
+    }
+</script>
 </body>
 </html>
