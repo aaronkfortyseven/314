@@ -10,13 +10,26 @@ async function fetchProperties() {
     return properties;
 }
 
+// SEARCH
+async function searchProperties() {
+    const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
+    const properties = await fetchProperties();
+    const filteredProperties = properties.filter(property => property.title.trim().toLowerCase().startsWith(searchValue));
+    
+    if (filteredProperties.length > 0) {
+        displayProperties(filteredProperties); // Display only the found properties
+    } else {
+        alert("Property not found.");
+    }
+}
+
 // DISPLAY
-async function displayProperties() {
+async function displayProperties(filteredProperties = null) {
     console.log('displayProperties called');
     const dashboard = document.getElementById('dashboard');
     dashboard.innerHTML = ''; // Clear existing content
     
-    const properties = await fetchProperties();
+    const properties = filteredProperties ? filteredProperties : await fetchProperties();
 
     properties.forEach(property => {
         const propertyDiv = document.createElement('div');
@@ -34,20 +47,6 @@ async function displayProperties() {
 
         dashboard.appendChild(propertyDiv);
     });
-}
-
-// SEARCH
-async function searchProperties() {
-    const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
-    const properties = await fetchProperties();
-    const filteredProperties = properties.filter(property => property.title.toLowerCase().startsWith(searchValue));
-    
-    if (filteredProperties.length > 0) {
-        displayProperties(filteredProperties); // Display only the found properties
-    } else {
-        alert("Property not found.");
-        displayProperties();
-    }
 }
 
 // REMOVE
@@ -75,14 +74,12 @@ function showAddPropertyForm() {
 }
 
 async function addProperty(event) {
-
-
     const newProperty = {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
         price: document.getElementById('price').value,
         location: document.getElementById('location').value,
-        type: document.getElementById('status').value,
+        status: document.getElementById('status').value, // Get selected status from dropdown
         agent: document.getElementById('agent').value,
     };
 
@@ -101,6 +98,7 @@ async function addProperty(event) {
         alert('Failed to add property.');
     }
 }
+
 
 // UPDATE
 async function showUpdatePropertyForm(title) {

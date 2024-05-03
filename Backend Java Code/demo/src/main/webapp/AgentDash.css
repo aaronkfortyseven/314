@@ -92,3 +92,37 @@ section {
     margin: 10px 0;
     background-color: #f9f9f9;
 }
+
+/* Style for forms */
+form {
+    display: block; /* Change from grid to block */
+    margin-bottom: 10px; /* Add some bottom margin for spacing */
+}
+
+/* Style for form labels */
+form label {
+    display: block; /* Display labels as block elements */
+    margin-bottom: 5px; /* Add some bottom margin for spacing */
+}
+
+/* Style for form inputs */
+form input[type="text"],
+form select {
+    width: calc(20% - 10px); /* Take up 100% width minus some padding */
+    padding: 5px;
+    margin-bottom: 10px; /* Add some bottom margin for spacing */
+}
+
+/* Style for submit buttons */
+form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Style for submit button on hover */
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
