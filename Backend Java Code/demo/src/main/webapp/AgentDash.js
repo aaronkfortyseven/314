@@ -85,7 +85,7 @@ async function removeProperty(title) {
 }
 
 
-// ADD - !!status field is bugged
+// ADD 
 function showAddPropertyForm() {
     document.getElementById('addPropertyForm').style.display = 'block';
     document.getElementById('addSubmitButton').addEventListener('click', function(event) {
