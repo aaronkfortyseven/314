@@ -183,3 +183,7 @@ document.getElementById('viewAllPropertiesBtn').addEventListener('click', functi
 // Event listener for add property button
 document.getElementById('addPropertyBtn').addEventListener('click', showAddPropertyForm);
 
+//event listener for reviews
+document.getElementById('reviewsBtn').addEventListener('click', function() {
+    window.location.href = 'reviews.html';
+});
