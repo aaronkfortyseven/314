@@ -1,12 +1,5 @@
 UpdatePropertyController.class
-com\example\LoginController.class
-com\example\ViewPropertyBoundary.class
-com\example\Main.class
-com\example\User.class
 CreatePropertyController.class
 CreatePropertyBoundary.class
 com/example/ViewReviewController.class
 UpdatePropertyBoundary.class
-com\example\Agent.class
-com\example\ViewPropertyController.class
-com\example\RemovePropertyController.class

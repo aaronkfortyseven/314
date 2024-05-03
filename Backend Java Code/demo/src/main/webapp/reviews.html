@@ -29,66 +29,43 @@
 <!-- Agent Reviews -->
 <div class="agent-reviews">
     <h2>Agent Reviews</h2>
-    <div class="agent-container">
-        <div class="agent">
-            <div class="agent-info">
-                <img src="agentReviews/johnRock.jpeg" alt="Agent Photo">
-                <h3>John Rockefeller</h3>
-                <p>Real Estate Agent</p>
-            </div>
-            <div class="reviews">
-                <div class="review">
-                    <h4>Property A</h4>
-                    <p>Customer review: "Great experience working with John. He was very knowledgeable and helped us find the perfect property."</p>
-                </div>
-                <div class="review">
-                    <h4>Property B</h4>
-                    <p>Customer review: "Unfortunately, John was not very responsive and we had some issues during the process."</p>
-                </div>
-            </div>
-        </div>
-        <div class="agent">
-            <div class="agent-info">
-                <img src="agentReviews/andrewC.jpeg" alt="Agent Photo">
-                <h3>Andrew Carnegie</h3>
-                <p>Real Estate Agent</p>
-            </div>
-            <div class="reviews">
-                <div class="review">
-                    <h4>Property C</h4>
-                    <p>Customer review: "Andrew was amazing to work with. He went above and beyond to help us find our dream home."</p>
-                </div>
-            </div>
-        </div>
-        <div class="agent">
-            <div class="agent-info">
-                <img src="agentReviews/warrenB.jpeg" alt="Agent Photo">
-                <h3>Warren Buffett</h3>
-                <p>Real Estate Agent</p>
-            </div>
-            <div class="reviews">
-                <div class="review">
-                    <h4>Property D</h4>
-                    <p>Customer review: "Warren provided excellent service throughout the entire process. Highly recommended."</p>
-                </div>
-                <div class="review">
-                    <h4>Property E</h4>
-                    <p>Customer review: "We had a few issues with Warren's communication, but overall, he did a good job."</p>
-                </div>
-            </div>
-        </div>
+    <div id="averageRating"></div>
+    <div id="reviews"></div>
     </div>
-</div>
 </section>
+    <div id="dashboard" class="dashboard"></div>
+    <script src="Reviews.js"></script>
+<style>
+    #averageRating {
+    /* Styles for the average rating section */
+    background-color: #f8f8f8;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5em; /* Make the text larger */
+    font-weight: bold; /* Make the text bold */
+}
 
-    <script>
-    </script>
+#reviews {
+    /* Styles for the reviews section */
+    background-color: #fff;
+    padding: 10px;
+}
+
+.review {
+    /* Styles for each review */
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+</style>
 
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2022 Real Estate Website. All rights reserved.</p>
+        <p>&copy; 2024 Real Estate Website. All rights reserved.</p>
     </footer>
 </body>
+
 </html>

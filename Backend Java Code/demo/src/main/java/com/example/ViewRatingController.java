@@ -21,11 +21,12 @@ public class ViewRatingController {
         this.collection = database.getCollection("users");
     }
 
-    public List<Document> execute(String username) {
+    public Double execute(String username) {
         Document user = collection.find(new Document("username", username)).first();
         if (user != null) {
-            return (List<Document>) user.get("ratings");
+            Number averageRating = (Number) user.get("averageRating");
+            return averageRating.doubleValue();
         }
-        return new ArrayList<>();
+        return null;
     }
 }
