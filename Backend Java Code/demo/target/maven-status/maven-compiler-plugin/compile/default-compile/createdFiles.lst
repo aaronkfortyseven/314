@@ -4,10 +4,14 @@ com\example\LoginController.class
 com\example\ViewPropertyBoundary.class
 com\example\Main.class
 com\example\User.class
+com\example\ViewReviewController.class
+com\example\ViewRatingController.class
 CreatePropertyController.class
 com\example\RemovePropertyBoundary.class
 CreatePropertyBoundary.class
 UpdatePropertyBoundary.class
 com\example\Agent.class
 com\example\ViewPropertyController.class
+com\example\ViewRatingBoundary.class
 com\example\RemovePropertyController.class
+com\example\ViewReviewBoundary.class
