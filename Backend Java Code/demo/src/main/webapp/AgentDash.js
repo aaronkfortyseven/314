@@ -49,6 +49,20 @@ async function displayProperties(filteredProperties = null) {
     });
 }
 
+// SEARCH
+async function searchProperties() {
+    const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
+    const properties = await fetchProperties();
+    const filteredProperties = properties.filter(property => property.title.toLowerCase().startsWith(searchValue));
+    
+    if (filteredProperties.length > 0) {
+        displayProperties(filteredProperties); // Display only the found properties
+    } else {
+        alert("Property not found.");
+        displayProperties();
+    }
+}
+
 // REMOVE
 async function removeProperty(title) {
     const response = await fetch(`/myapp/RemovePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
@@ -56,15 +70,22 @@ async function removeProperty(title) {
     });
 
     if (response.ok) {
-        const propertyDiv = document.querySelector(`div.property:contains('${title}')`);
-        propertyDiv.remove();
-        displayProperties();
+        const propertyDivs = document.querySelectorAll('div.property');
+        const propertyDiv = Array.from(propertyDivs).find(div => div.textContent.includes(title));
+
+        if (propertyDiv) {
+            propertyDiv.remove();
+            displayProperties();
+        } else {
+            alert('Failed to remove property.');
+        }
     } else {
         alert('Failed to remove property.');
     }
 }
 
-// ADD
+
+// ADD - !!status field is bugged
 function showAddPropertyForm() {
     document.getElementById('addPropertyForm').style.display = 'block';
     document.getElementById('addSubmitButton').addEventListener('click', function(event) {
@@ -92,8 +113,9 @@ async function addProperty(event) {
     });
 
     if (response.ok) {
-        document.getElementById('updatePropertyForm').style.display = 'none';
+        
         displayProperties();
+        document.getElementById('addPropertyForm').style.display = 'none';
     } else {
         alert('Failed to add property.');
     }
@@ -173,3 +195,7 @@ document.getElementById('viewAllPropertiesBtn').addEventListener('click', functi
 // Event listener for add property button
 document.getElementById('addPropertyBtn').addEventListener('click', showAddPropertyForm);
 
+//event listener for reviews
+document.getElementById('reviewsBtn').addEventListener('click', function() {
+    window.location.href = 'reviews.html';
+});
