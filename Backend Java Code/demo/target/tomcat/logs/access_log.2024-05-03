@@ -171,3 +171,6 @@
 0:0:0:0:0:0:0:1 - - [03/May/2024:00:29:25 -0400] "GET /AgentDash.html HTTP/1.1" 200 2657 http-bio-8080-exec-3 3
 0:0:0:0:0:0:0:1 - - [03/May/2024:00:29:25 -0400] "GET /myapp/ViewPropertyBoundary?username=agent_user HTTP/1.1" 200 286 http-bio-8080-exec-3 2
 >>>>>>> origin/main
+0:0:0:0:0:0:0:1 - - [03/May/2024:12:56:29 +0800] "GET /AgentDash.html HTTP/1.1" 200 2638 http-bio-8080-exec-1 60
+0:0:0:0:0:0:0:1 - - [03/May/2024:12:56:29 +0800] "GET /AgentDash.js HTTP/1.1" 200 6538 http-bio-8080-exec-2 4
+0:0:0:0:0:0:0:1 - - [03/May/2024:12:56:29 +0800] "GET /myapp/ViewPropertyBoundary?username=agent_user HTTP/1.1" 200 416 http-bio-8080-exec-3 704
