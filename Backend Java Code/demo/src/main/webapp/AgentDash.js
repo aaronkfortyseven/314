@@ -36,11 +36,11 @@ async function displayProperties() {
     });
 }
 
-// SEARCH
+// SEARCH - !! doesn't filter out irrelavant searches
 async function searchProperties() {
     const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
     const properties = await fetchProperties();
-    const filteredProperties = properties.filter(property => property.title.toLowerCase().startsWith(searchValue));
+    const filteredProperties = properties.filter(property => property.title.toLowerCase().includes(searchValue));
     
     if (filteredProperties.length > 0) {
         displayProperties(filteredProperties); // Display only the found properties
@@ -57,15 +57,22 @@ async function removeProperty(title) {
     });
 
     if (response.ok) {
-        const propertyDiv = document.querySelector(`div.property:contains('${title}')`);
-        propertyDiv.remove();
-        displayProperties();
+        const propertyDivs = document.querySelectorAll('div.property');
+        const propertyDiv = Array.from(propertyDivs).find(div => div.textContent.includes(title));
+
+        if (propertyDiv) {
+            propertyDiv.remove();
+            displayProperties();
+        } else {
+            alert('Failed to remove property.');
+        }
     } else {
         alert('Failed to remove property.');
     }
 }
 
-// ADD
+
+// ADD - !!status field is bugged
 function showAddPropertyForm() {
     document.getElementById('addPropertyForm').style.display = 'block';
     document.getElementById('addSubmitButton').addEventListener('click', function(event) {
@@ -95,8 +102,9 @@ async function addProperty(event) {
     });
 
     if (response.ok) {
-        document.getElementById('updatePropertyForm').style.display = 'none';
+        
         displayProperties();
+        document.getElementById('addPropertyForm').style.display = 'none';
     } else {
         alert('Failed to add property.');
     }
