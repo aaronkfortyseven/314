@@ -10,7 +10,6 @@
     <header>
         <h1>Real Estate Agent Dashboard</h1>
         <button id="logoutBtn">Logout</button>
-        <button id="reviewsBtn">View Reviews</button>
     </header>
 
     <!-- Search bar and buttons container -->
@@ -41,7 +40,11 @@
         <input type="text" id="location" name="location">
     
         <label for="status">status:</label>
-        <input type="text" id="status" name="status">
+        <select id="status">
+            <option value="For Sale">For Sale</option>
+            <option value="Sold">Sold</option>
+        </select>
+        
     
         <label for="agent">Agent:</label>
         <input type="text" id="agent" name="agent">
