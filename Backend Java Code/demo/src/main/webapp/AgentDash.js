@@ -3,7 +3,6 @@ const username = sessionStorage.getItem('username');
 
 // FETCH from the server
 async function fetchProperties() {
-    console.log('fetchProperties called');
     const response = await fetch(`/myapp/ViewPropertyBoundary?username=${username}`);
     const properties = await response.json();
     console.log(properties);
@@ -159,16 +158,17 @@ function logout() {
 // Display initial properties on page load
 displayProperties();
 
-// Event listener for logout button
+//Buttons
 document.getElementById('logoutBtn').addEventListener('click', logout);
 
-// Event listener for search button
 document.getElementById('searchBtn').addEventListener('click', searchProperties);
 
-// Event listener for view all properties button
 document.getElementById('viewAllPropertiesBtn').addEventListener('click', function() {
     displayProperties();
 });
 
-// Event listener for add property button
 document.getElementById('addPropertyBtn').addEventListener('click', showAddPropertyForm);
+
+document.getElementById('reviewsBtn').addEventListener('click', function() {
+    window.location.href = 'Reviews.html';
+});
