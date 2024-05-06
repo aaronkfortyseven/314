@@ -19,7 +19,8 @@
             <li><a href="listings.html">Property Listings</a></li>
             <li><a href="calculator.html">Mortgage Calculator</a></li>
             <li><a href="PersonalReviews.html">Agent Reviews</a></li>
-            <li><a href="login.jsp">Login</a></li>
+            <li><a id="loginLink" href="login.jsp">Login</a></li>
+            <li><a id="backToDashboard" href="BuyerDash.html" style="display: none;">Back to Dashboard</a></li>
         </ul>
     </nav>
 
@@ -38,6 +39,13 @@
     <div id="dashboard" class="dashboard"></div>
     <script src='listings.js'></script>
 
+    <div class="property">
+        <h2>${property.title}</h2>
+        <p>Description: ${property.description}</p>
+        <p>Price: ${property.price}</p>
+        <p>Status: ${property.status}</p>
+        <button class="favourite-btn">❤️</button>
+    </div>
 
  
     </main>

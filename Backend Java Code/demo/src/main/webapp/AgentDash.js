@@ -172,3 +172,18 @@ document.getElementById('addPropertyBtn').addEventListener('click', showAddPrope
 document.getElementById('reviewsBtn').addEventListener('click', function() {
     window.location.href = 'PersonalReviews.html';
 });
+
+//reusable code for login and back to dashboard replacing each other. 
+document.addEventListener('DOMContentLoaded', (event) => {
+    const username = sessionStorage.getItem('username');
+    if (username) {
+        document.getElementById('backToDashboard').style.display = 'inline';
+    }
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const username = sessionStorage.getItem('username');
+    if (username) {
+        document.getElementById('loginLink').style.display = 'none';
+    }
+});

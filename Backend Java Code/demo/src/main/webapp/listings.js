@@ -1,3 +1,6 @@
+//current session's username
+const username = sessionStorage.getItem('username');
+
 // FETCH from the server
 async function fetchProperties() {
     const response = await fetch(`/myapp/ViewAllBoundary`); // Removed username from the URL
@@ -20,7 +23,6 @@ async function searchProperties() {
 }
 
 // DISPLAY
-// DISPLAY
 async function displayProperties(properties) {
     console.log('displayProperties called');
     const dashboard = document.getElementById('dashboard');
@@ -40,10 +42,30 @@ async function displayProperties(properties) {
             <p>Description: ${property.description}</p>
             <p>Price: ${property.price}</p>
             <p>Status: ${property.status}</p>
+            <button class="favourite-btn">❤️</button>
         `;
 
         dashboard.appendChild(propertyDiv);
+
+        propertyDiv.querySelector('.favourite-btn').addEventListener('click', () => addToFavourites(property));
     });
+}
+
+async function addToFavourites(property) {
+    // Send a request to the server to add the property to the user's favourites
+    const response = await fetch(`/myapp/FavPropertyBoundary?username=${username}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(property)
+    });
+
+    if (response.ok) {
+        alert("Property added to favourites.");
+    } else {
+        alert("Failed to add property to favourites.");
+    }
 }
 
 displayProperties();
@@ -52,4 +74,20 @@ displayProperties();
 document.addEventListener('DOMContentLoaded', (event) => {
     console.log('Search button called');
     document.getElementById('searchBtn').addEventListener('click', searchProperties);
+});
+
+
+//reusable code for login and back to dashboard replacing each other. 
+document.addEventListener('DOMContentLoaded', (event) => {
+    const username = sessionStorage.getItem('username');
+    if (username) {
+        document.getElementById('backToDashboard').style.display = 'inline';
+    }
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const username = sessionStorage.getItem('username');
+    if (username) {
+        document.getElementById('loginLink').style.display = 'none';
+    }
 });

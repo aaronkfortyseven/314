@@ -3,5 +3,7 @@ CreatePropertyController.class
 CreatePropertyBoundary.class
 com/example/ViewAllController.class
 com/example/ViewReviewController.class
+FavPropertyController.class
 UpdatePropertyBoundary.class
+FavPropertyBoundary.class
 com/example/ViewAllBoundary.class

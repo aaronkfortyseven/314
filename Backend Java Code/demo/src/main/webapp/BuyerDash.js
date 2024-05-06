@@ -79,3 +79,6 @@ document.getElementById('viewAllPropertiesBtn').addEventListener('click', functi
 document.getElementById('reviewsBtn').addEventListener('click', function() {
     window.location.href = 'PersonalReviews.html';
 });
+
+
+
