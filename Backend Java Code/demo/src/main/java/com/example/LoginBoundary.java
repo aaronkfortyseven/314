@@ -21,16 +21,42 @@ public class LoginBoundary extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        // User user = loginController.login(username, password);
+        // if (user != null) {
+        //     // Login successful
+        //     request.getSession().setAttribute("user", user);
+        //     response.sendRedirect("/AgentDash.html");
+        // } else {
+        //     // Login failed
+        //     HttpSession session = request.getSession();
+        //     session.setAttribute("loginError", "true");
+        //     response.sendRedirect("/login.jsp");
+        // }
         User user = loginController.login(username, password);
         if (user != null) {
-            // Login successful
             request.getSession().setAttribute("user", user);
-            response.sendRedirect("/AgentDash.html");
+            String role = user.getRole();
+            if ("agent".equals(role)) {
+                response.sendRedirect("/AgentDash.html");
+            } else if ("buyer".equals(role)) {
+                response.sendRedirect("/BuyerDash.html");
+            } else if ("seller".equals(role)) {
+                response.sendRedirect("/SellerDash.html");
+            } else if ("sys admin".equals(role)) {
+                response.sendRedirect("/SysAdDash.html");
+            }  else {
+            // Login failed
+            HttpSession session = request.getSession();
+            session.setAttribute("loginError", "true");
+            response.sendRedirect("/login.jsp");
+            }
         } else {
             // Login failed
             HttpSession session = request.getSession();
             session.setAttribute("loginError", "true");
             response.sendRedirect("/login.jsp");
         }
+
+
     }
 }

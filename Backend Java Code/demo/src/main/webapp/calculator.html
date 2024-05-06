@@ -19,41 +19,13 @@
             <li><a href="listings.html">Property Listings</a></li>
             <li><a href="calculator.html">Mortgage Calculator</a></li>
             <li><a href="reviews.html">Agent Reviews</a></li>
-            <li><a href="login.html">Login</a></li>
+            <li><a href="login.jsp">Login</a></li>
         </ul>
     </nav>
 
     <!-- Main Content -->
     <main>
-    <!-- Property Listings -->
-    <section>
-        <h2>Property Listings</h2>
-        <div class="property-listing">
-            <a href="#">
-                <img src="https://via.placeholder.com/200" alt="Property Image">
-                <h3>Condominium</h3>
-                <p>123 Orchard Road, Singapore</p>
-                <p>$1,200,000</p>
-            </a>
-        </div>
-        <div class="property-listing">
-            <a href="#">
-                <img src="https://via.placeholder.com/200" alt="Property Image">
-                <h3>Semi-Detached House</h3>
-                <p>456 Bukit Timah Road, Singapore</p>
-                <p>$2,800,000</p>
-            </a>
-        </div>
-        <div class="property-listing">
-            <a href="#">
-                <img src="https://via.placeholder.com/200" alt="Property Image">
-                <h3>Bungalow</h3>
-                <p>789 Serangoon Road, Singapore</p>
-                <p>$4,500,000</p>
-            </a>
-        </div>
-    </section>
-
+ 
     <!-- Mortgage Calculator -->
     <section>
         <h2>Mortgage Calculator (Fixed-rate)</h2>
@@ -74,7 +46,6 @@
         <p id="total-amount-paid"></p>
         <p id="total-interest-paid"></p>
     </section>
-
     <script>
         function calculateMortgage() {
             var loanAmount = document.getElementById('loan-amount').value;

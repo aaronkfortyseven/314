@@ -170,5 +170,5 @@ document.getElementById('viewAllPropertiesBtn').addEventListener('click', functi
 document.getElementById('addPropertyBtn').addEventListener('click', showAddPropertyForm);
 
 document.getElementById('reviewsBtn').addEventListener('click', function() {
-    window.location.href = 'Reviews.html';
+    window.location.href = 'PersonalReviews.html';
 });

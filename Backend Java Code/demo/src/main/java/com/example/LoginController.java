@@ -20,24 +20,10 @@ public class LoginController {
         Document user = collection.find(new Document("username", username)).first();
         if (user != null) {
             String dbPassword = user.getString("password");
+            String role = user.getString("role");
             if (dbPassword.equals(password)) {
-                return new User(username, password);
+                return new User(username, password, role);
             }
-            //For different roles
-            // if (dbPassword.equals(password)) {
-            //     switch (role) {
-            //         case "Agent":
-            //             return new Agent(username, password);
-            //         // case "Buyer":
-            //         //     return new Buyer(username, password);
-            //         // case "Seller":
-            //         //     return new Seller(username, password);
-            //         // case "SysAdmin":
-            //         //     return new SysAdmin(username, password);
-            //         default:
-            //             throw new IllegalArgumentException("Invalid user type");
-            //     }
-            // }
         }
         return null;
     }
