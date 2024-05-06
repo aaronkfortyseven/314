@@ -1,5 +1,7 @@
 UpdatePropertyController.class
 CreatePropertyController.class
 CreatePropertyBoundary.class
+com/example/ViewAllController.class
 com/example/ViewReviewController.class
 UpdatePropertyBoundary.class
+com/example/ViewAllBoundary.class

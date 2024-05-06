@@ -13,7 +13,7 @@ async function fetchProperties() {
 async function searchProperties() {
     const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
     const properties = await fetchProperties();
-    const filteredProperties = properties.filter(property => property.title.trim().toLowerCase().startsWith(searchValue));
+    const filteredProperties = properties.filter(property => property.title.trim().toLowerCase().includes(searchValue));
     
     if (filteredProperties.length > 0) {
         displayProperties(filteredProperties); // Display only the found properties

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="listings.css">
 </head>
 <body>
     <!-- Header -->
@@ -18,7 +18,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="listings.html">Property Listings</a></li>
             <li><a href="calculator.html">Mortgage Calculator</a></li>
-            <li><a href="reviews.html">Agent Reviews</a></li>
+            <li><a href="PersonalReviews.html">Agent Reviews</a></li>
             <li><a href="login.jsp">Login</a></li>
         </ul>
     </nav>
@@ -30,6 +30,15 @@
         <h2>Property Listings</h2>
 
     </section>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by property title...">
+        <button id="searchBtn">Search</button>
+    </div>
+    
+    <div id="dashboard" class="dashboard"></div>
+    <script src='listings.js'></script>
+
+
  
     </main>
 
