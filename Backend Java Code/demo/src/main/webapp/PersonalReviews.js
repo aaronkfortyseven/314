@@ -1,6 +1,7 @@
 //current session's username
 const username = sessionStorage.getItem('username');
 
+// change to search by name 7 may
 document.getElementById('searchButton').addEventListener('click', async () => {
     const searchUsername = document.getElementById('searchBar').value;
     if (searchUsername) {
@@ -62,9 +63,49 @@ async function displayAverageRating(username) {
     dashboard.appendChild(ratingDiv); // Append the div to the dashboard
 }
 
+// SHOW ADD REVIEW FORM
+function showAddReviewForm() {
+    document.getElementById('reviewForm').style.display = 'block';
+    document.getElementById('addReviewButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        addReview();
+    });
+}
+
+// ADD REVIEW
+async function addReview() {
+    const reviewText = document.getElementById('reviewText').value;
+    const name = document.getElementById('agentName').value;
+
+    const newReview = {
+        name: name,
+        review: reviewText,
+    };
+
+    console.log(`Adding review for agent: ${name}`); // Log the agent's name
+
+    const response = await fetch(`/myapp/CreateReviewBoundary`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newReview),
+    });
+
+    if (response.ok) {
+        console.log('Review added successfully.');
+        document.getElementById('reviewForm').style.display = 'none';
+        alert('Review added successfully.');
+    } else {
+        alert('Failed to add review.');
+    }
+}
 
 
 displayReviews();
 
 displayAverageRating(username);
+
+showAddReviewForm();
+
 

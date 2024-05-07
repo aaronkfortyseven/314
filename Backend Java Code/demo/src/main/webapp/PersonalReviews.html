@@ -29,12 +29,25 @@
     <section>
 <!-- Agent Reviews -->
 <div class="agent-reviews">
-    <h2>Agent Reviews</h2>
+    <h2>Agent Reviews. See reviews for John, Emma or Michael!</h2>
     <input type="text" id="searchBar" placeholder="Search for an agent">
     <button id="searchButton">Search</button>
     <div id="averageRating"></div>
     <div id="reviews"></div>
     </div>
+</section>
+
+<!-- ADD a review-->
+<section>
+    <h2>Leave a Review</h2>
+    <form id="reviewForm">
+        <label for="agentName">Agent's name:</label>
+        <input id="agentName" type="text"><br>
+        <label for="reviewText">Your review:</label>
+        <textarea id="reviewText"></textarea>
+
+        <button type="submit" id="addReviewButton">Submit Review</button>
+    </form>
 </section>
     <div id="dashboard" class="dashboard"></div>
     <script src="PersonalReviews.js"></script>
