@@ -27,10 +27,10 @@
 <main>
     <div class="hero">
         <div class="form-box" style="margin-bottom: 10px;">
-            <h2 style="text-align: center;">Choose User</h2> <!-- Title indicating to choose user -->
+            <h2 style="text-align: center; margin-bottom: 0px;">Choose User</h2> <!-- Title indicating to choose user -->
             <!-- Dropdown menu for user roles -->
-            <form action="/myapp/LoginBoundary" method="post" id="login" class="input-group">
-                <select id="userRole" class="input-field">
+            <form action="/myapp/LoginBoundary" method="post" id="login" class="input-group" style="margin-top: -100px;">
+                <select id="userRole" class="input-field" style="display: block;">
                     <option value="Buyer">Buyer</option>
                     <option value="Seller">Seller</option>
                     <option value="RealEstateAgent">Real Estate Agent</option>
@@ -43,6 +43,7 @@
         </div>
     </div>
 </main>
+
 
 
     <!-- Footer -->

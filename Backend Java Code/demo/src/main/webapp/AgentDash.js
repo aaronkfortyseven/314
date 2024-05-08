@@ -52,19 +52,28 @@ async function displayProperties(filteredProperties = null) {
 async function removeProperty(title) {
     const confirmed = confirm("Are you sure you want to remove this property?");
     if (confirmed) {
-        const response = await fetch(`/myapp/RemovePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
-            method: 'DELETE',
-        });
+        try {
+            const response = await fetch(`/myapp/RemovePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
+                method: 'DELETE',
+            });
 
-        if (response.ok) {
-            const propertyDiv = document.querySelector(`div.property:contains('${title}')`);
-            propertyDiv.remove();
-            displayProperties();
-        } else {
-            alert('Failed to remove property.');
+            if (response.ok) {
+                const propertyDivs = document.querySelectorAll('.property');
+                propertyDivs.forEach(propertyDiv => {
+                    const propertyTitle = propertyDiv.querySelector('h2').textContent;
+                    if (propertyTitle === title) {
+                        propertyDiv.remove();
+                    }
+                });
+            } else {
+                throw new Error('Failed to remove property.');
+            }
+        } catch (error) {
+            alert(error.message);
         }
     }
 }
+
 
 // ADD
 function showAddPropertyForm() {
