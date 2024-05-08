@@ -16,3 +16,13 @@
 0:0:0:0:0:0:0:1 - - [08/May/2024:15:48:40 +0800] "GET /PersonalReviews.js HTTP/1.1" 200 3461 http-bio-8080-exec-4 7
 0:0:0:0:0:0:0:1 - - [08/May/2024:15:48:40 +0800] "GET /myapp/ViewRatingBoundary?username=agent_user HTTP/1.1" 200 13 http-bio-8080-exec-2 181
 0:0:0:0:0:0:0:1 - - [08/May/2024:15:48:40 +0800] "GET /myapp/ViewReviewBoundary?username=agent_user HTTP/1.1" 200 479 http-bio-8080-exec-4 220
+0:0:0:0:0:0:0:1 - - [08/May/2024:16:52:52 +0800] "GET /login.jsp HTTP/1.1" 200 2157 http-bio-8080-exec-1 101
+0:0:0:0:0:0:0:1 - - [08/May/2024:16:52:52 +0800] "GET /styles.css HTTP/1.1" 304 - http-bio-8080-exec-2 11
+0:0:0:0:0:0:0:1 - - [08/May/2024:16:52:56 +0800] "POST /myapp/LoginBoundary HTTP/1.1" 302 - http-bio-8080-exec-3 569
+0:0:0:0:0:0:0:1 - - [08/May/2024:16:52:56 +0800] "GET /BuyerDash.html HTTP/1.1" 304 - http-bio-8080-exec-4 5
+0:0:0:0:0:0:0:1 - - [08/May/2024:16:52:56 +0800] "GET /SellerDashStyle.css HTTP/1.1" 304 - http-bio-8080-exec-5 11
+0:0:0:0:0:0:0:1 - - [08/May/2024:16:52:56 +0800] "GET /BuyerDash.js HTTP/1.1" 304 - http-bio-8080-exec-6 10
+0:0:0:0:0:0:0:1 - - [08/May/2024:16:53:02 +0800] "POST /myapp/LoginBoundary HTTP/1.1" 302 - http-bio-8080-exec-8 323
+0:0:0:0:0:0:0:1 - - [08/May/2024:16:53:02 +0800] "GET /AgentDash.html HTTP/1.1" 304 - http-bio-8080-exec-9 2
+0:0:0:0:0:0:0:1 - - [08/May/2024:16:53:02 +0800] "GET /AgentDash.js HTTP/1.1" 304 - http-bio-8080-exec-10 9
+0:0:0:0:0:0:0:1 - - [08/May/2024:16:53:02 +0800] "GET /myapp/ViewPropertyBoundary?username=agent_user HTTP/1.1" 200 416 http-bio-8080-exec-1 175
