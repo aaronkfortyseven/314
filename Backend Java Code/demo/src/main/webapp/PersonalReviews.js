@@ -1,7 +1,8 @@
 //current session's username
 const username = sessionStorage.getItem('username');
 
-// change to search by name 7 may
+// change to search by name 7 may maybe just do it via front end drop down,
+// where if they select john, username = agent_user
 document.getElementById('searchButton').addEventListener('click', async () => {
     const searchUsername = document.getElementById('searchBar').value;
     if (searchUsername) {
