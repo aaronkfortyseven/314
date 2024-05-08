@@ -1,6 +1,4 @@
 UpdatePropertyController.class
-com\example\ViewAllBoundary.class
-com\example\ViewReviewController.class
 CreatePropertyController.class
 CreateReviewBoundary.class
 CreatePropertyBoundary.class
@@ -8,4 +6,3 @@ FavPropertyController.class
 CreateReviewController.class
 UpdatePropertyBoundary.class
 FavPropertyBoundary.class
-com\example\ViewAllController.class
