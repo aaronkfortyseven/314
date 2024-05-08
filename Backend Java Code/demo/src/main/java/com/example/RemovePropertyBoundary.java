@@ -24,6 +24,6 @@ public class RemovePropertyBoundary extends HttpServlet {
         String username = request.getParameter("username");
         String propertyTitle = request.getParameter("propertyTitle");
 
-        removePropertyController.execute(username, propertyTitle);
+        removePropertyController.removeProperty(username, propertyTitle);
     }
 }

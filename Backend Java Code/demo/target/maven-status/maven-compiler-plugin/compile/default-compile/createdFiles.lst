@@ -1,7 +1,7 @@
 UpdatePropertyController.class
-CreatePropertyController.class
 CreateReviewBoundary.class
-CreatePropertyBoundary.class
+com/example/CreatePropertyController.class
+com/example/CreatePropertyBoundary.class
 FavPropertyController.class
 CreateReviewController.class
 UpdatePropertyBoundary.class
