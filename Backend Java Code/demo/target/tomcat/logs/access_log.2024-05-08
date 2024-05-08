@@ -69,3 +69,9 @@
 0:0:0:0:0:0:0:1 - - [08/May/2024:11:49:52 +0800] "POST /myapp/LoginBoundary HTTP/1.1" 302 - http-bio-8080-exec-5 29
 0:0:0:0:0:0:0:1 - - [08/May/2024:11:49:52 +0800] "GET /SysDash.html HTTP/1.1" 304 - http-bio-8080-exec-5 5
 0:0:0:0:0:0:0:1 - - [08/May/2024:11:49:52 +0800] "GET /SysDash.js HTTP/1.1" 200 2306 http-bio-8080-exec-5 8
+0:0:0:0:0:0:0:1 - - [08/May/2024:11:53:33 +0800] "GET /login.jsp HTTP/1.1" 200 2780 http-bio-8080-exec-1 60
+0:0:0:0:0:0:0:1 - - [08/May/2024:11:56:28 +0800] "POST /myapp/LoginBoundary HTTP/1.1" 302 - http-bio-8080-exec-3 766
+0:0:0:0:0:0:0:1 - - [08/May/2024:11:56:28 +0800] "GET /BuyerDash.html HTTP/1.1" 200 1215 http-bio-8080-exec-4 12
+0:0:0:0:0:0:0:1 - - [08/May/2024:11:56:28 +0800] "GET /BuyerDash.js HTTP/1.1" 200 2946 http-bio-8080-exec-5 9
+0:0:0:0:0:0:0:1 - - [08/May/2024:11:56:30 +0800] "GET /myapp/ViewPropertyBoundary?username=example_user HTTP/1.1" 200 305 http-bio-8080-exec-6 166
+0:0:0:0:0:0:0:1 - - [08/May/2024:11:56:40 +0800] "GET /login.jsp HTTP/1.1" 200 2780 http-bio-8080-exec-7 7

@@ -48,18 +48,22 @@ async function displayProperties(filteredProperties = null) {
 
 // REMOVE
 async function removeProperty(title) {
-    const response = await fetch(`/myapp/RemovePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
-        method: 'DELETE',
-    });
+    const confirmed = confirm("Are you sure you want to remove this property?");
+    if (confirmed) {
+        const response = await fetch(`/myapp/RemovePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
+            method: 'DELETE',
+        });
 
-    if (response.ok) {
-        const propertyDiv = document.querySelector(`div.property:contains('${title}')`);
-        propertyDiv.remove();
-        displayProperties();
-    } else {
-        alert('Failed to remove property.');
+        if (response.ok) {
+            const propertyDiv = document.querySelector(`div.property:contains('${title}')`);
+            propertyDiv.remove();
+            displayProperties();
+        } else {
+            alert('Failed to remove property.');
+        }
     }
 }
+
 
 function logout() {
     //clears session username
