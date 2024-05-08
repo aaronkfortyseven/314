@@ -23,55 +23,53 @@
         </ul>
     </nav>
 
-    <!-- Main Content -->
-    <main>
-        <div class="hero">
-            <div class="form-box">
-                <form action="/myapp/LoginBoundary" method="post" id="login" class="input-group">
-                    <input id="username" name="username" type="text" class="input-field" placeholder="User Id" required>
-                    <input id="password" name="password" type="password" class="input-field" placeholder="Enter Password" required>
-
-                    <!-- Dropdown menu for user roles -->
-                    <select id="userRole" class="input-field">
-                        <option value="Buyer">Buyer</option>
-                        <option value="Seller">Seller</option>
-                        <option value="RealEstateAgent">Real Estate Agent</option>
-                        <option value="SystemAdmin">System Admin</option>
-                    </select>
-
-                    <button type="submit" class="submit-btn" onclick="storeUsername()">Log in</button>
-                </form>
-            </div>
+<!-- Main Content -->
+<main>
+    <div class="hero">
+        <div class="form-box" style="margin-bottom: 10px;">
+            <h2 style="text-align: center;">Choose User</h2> <!-- Title indicating to choose user -->
+            <!-- Dropdown menu for user roles -->
+            <form action="/myapp/LoginBoundary" method="post" id="login" class="input-group">
+                <select id="userRole" class="input-field">
+                    <option value="Buyer">Buyer</option>
+                    <option value="Seller">Seller</option>
+                    <option value="RealEstateAgent">Real Estate Agent</option>
+                    <option value="SystemAdmin">System Admin</option>
+                </select>
+                <input id="username" name="username" type="text" class="input-field" placeholder="User Id" required>
+                <input id="password" name="password" type="password" class="input-field" placeholder="Enter Password" required>
+                <button type="submit" class="submit-btn" onclick="storeUsername()">Log in</button>
+            </form>
         </div>
-    </main>
+    </div>
+</main>
+
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Real Estate Website. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for showing a popup when login is unsuccessful -->
-    <script>
-        // Check if the loginError flag is present in the session
-        var loginError = "<%=session.getAttribute("loginError")%>";
-        if (loginError && loginError === "true") {
-            // Show a popup
-            alert("Invalid username or password.");
-            // Remove the flag from the session
-            <%
-                session.removeAttribute("loginError");
-            %>
-        }
-    </script>
+<!-- JavaScript for showing a popup when login is unsuccessful -->
+<script>
+    // Check if the loginError flag is present in the session
+    var loginError = "<%=session.getAttribute("loginError")%>";
+    if (loginError && loginError === "true") {
+        // Show a popup
+        alert("Invalid username or password.");
+        // Remove the flag from the session
+        <%
+            session.removeAttribute("loginError");
+        %>
+    }
+</script>
 
-    <!-- Storing username and role in session -->
-    <script>
-        function storeUsername() {
-            var username = document.getElementById('username').value;
-            var userRole = document.getElementById('userRole').value;
-            sessionStorage.setItem('username', username);
-            sessionStorage.setItem('userRole', userRole);
-        }
-    </script>
+<!-- Storing username in session-->
+<script>
+    function storeUsername() {
+        var username = document.getElementById('username').value;
+        sessionStorage.setItem('username', username);
+    }
+</script>
 </body>
 </html>
