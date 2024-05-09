@@ -6,6 +6,13 @@ import org.bson.Document;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoClient;
 import com.mongodb.ConnectionString;
+import java.util.List;
+import java.util.ArrayList;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.FindIterable;
+import java.util.stream.StreamSupport;
+import java.util.stream.Collectors;
 
 public class Review {
     private MongoCollection<Document> collection;

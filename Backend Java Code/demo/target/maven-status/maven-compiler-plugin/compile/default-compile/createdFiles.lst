@@ -1,9 +1,13 @@
-com/example/UpdatePropertyController.class
 com/example/FavPropertyController.class
+com/example/CreateRatingBoundary.class
 com/example/Property.class
+com/example/Rating.class
 com/example/CreatePropertyController.class
-com/example/CreatePropertyBoundary.class
-com/example/FavPropertyBoundary.class
 com/example/UpdatePropertyBoundary.class
 com/example/CreateReviewController.class
 com/example/CreateReviewBoundary.class
+com/example/UpdatePropertyController.class
+com/example/Review.class
+com/example/CreatePropertyBoundary.class
+com/example/FavPropertyBoundary.class
+com/example/CreateRatingController.class

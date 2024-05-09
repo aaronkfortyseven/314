@@ -1,10 +1,13 @@
 package com.example;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.bson.Document;
 import java.io.IOException;
+import com.google.gson.Gson;
 
 @WebServlet("/myapp/CreateRatingBoundary")
 public class CreateRatingBoundary extends HttpServlet {
