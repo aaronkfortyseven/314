@@ -31,19 +31,26 @@ async function displayProperties(filteredProperties = null) {
     const properties = filteredProperties ? filteredProperties : await fetchProperties();
 
     properties.forEach(property => {
-        const propertyDiv = document.createElement('div');
-        propertyDiv.classList.add('property');
-
-        propertyDiv.innerHTML = `
-            <h2>${property.title}</h2>
-            <p>Description: ${property.description}</p>
-            <p>Price: ${property.price}</p>
-            <p>Status: ${property.status}</p>
-            <button onclick="removeProperty('${property.title}')">Remove from saved</button>
-        `;
-
+        const propertyDiv = createPropertyElement(property);
         dashboard.appendChild(propertyDiv);
     });
+}
+
+function createPropertyElement(property) {
+    const propertyDiv = document.createElement('div');
+    propertyDiv.classList.add('property');
+
+    propertyDiv.innerHTML = `
+        <h2>${property.title}</h2>
+        <p>Description: ${property.description}</p>
+        <p>Location: ${property.location}</p>
+        <p>Size: ${property.size}</p>
+        <p>Price: ${property.price}</p>
+        <p>Status: ${property.status}</p>
+        <button onclick="removeProperty('${property.title}')">Remove from saved</button>
+    `;
+
+    return propertyDiv;
 }
 
 
@@ -58,10 +65,18 @@ document.getElementById('logoutBtn').addEventListener('click', logout);
 
 document.getElementById('searchBtn').addEventListener('click', searchProperties);
 
-document.getElementById('viewAllPropertiesBtn').addEventListener('click', function() {
-    displayProperties();
+document.getElementById('viewAllPropertiesBtn').addEventListener('click', async function() {
+    await displayProperties(); // Fetch and display all properties
 });
 
-document.getElementById('reviewsBtn').addEventListener('click', function() {
-    window.location.href = 'PersonalReviews.html';
+document.getElementById('viewListingsBtn').addEventListener('click', async function() {
+    // Implement functionality to view user's own listings
+});
+
+document.getElementById('viewAgentsBtn').addEventListener('click', async function() {
+    // Implement functionality to view agents
+});
+
+document.getElementById('viewPropertyTypesBtn').addEventListener('click', async function() {
+    // Implement functionality to view types of properties sold
 });

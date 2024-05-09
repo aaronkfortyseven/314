@@ -32,7 +32,7 @@ public class LoginBoundary extends HttpServlet {
             } else if ("seller".equals(role)) {
                 response.sendRedirect("/SellerDash.html");
             } else if ("sys admin".equals(role)) {
-                response.sendRedirect("/SysAdDash.html");
+                response.sendRedirect("/SysDash.html");
             }  else {
             // Login failed
             HttpSession session = request.getSession();

@@ -333,4 +333,3 @@
 0:0:0:0:0:0:0:1 - - [07/May/2024:15:35:51 +0800] "GET /myapp/ViewRatingBoundary?username=agent_user HTTP/1.1" 200 13 http-bio-8080-exec-8 2
 0:0:0:0:0:0:0:1 - - [07/May/2024:15:35:51 +0800] "GET /myapp/ViewReviewBoundary?username=agent_user HTTP/1.1" 200 51 http-bio-8080-exec-7 4
 0:0:0:0:0:0:0:1 - - [07/May/2024:15:36:02 +0800] "GET /login.jsp HTTP/1.1" 200 2222 http-bio-8080-exec-8 2
->>>>>>> 1b3cae25d10bff347773f6f866acc198dc1c8255

@@ -23,20 +23,28 @@
         </ul>
     </nav>
 
-    <!-- Main Content -->
-    <main>
-        <div class = "hero">
-
-            <div class = "form-box">
-                <form action="/myapp/LoginBoundary" method="post" id="login" class="input-group">
-                    <input id="username" name="username" type="text" class="input-field" placeholder="User Id" required>
-                    <input id="password" name="password" type="password" class="input-field" placeholder="Enter Password" required>
-                    <input type="checkbox" class="check-box"><span>Remember Password</span>
-                    <button type="submit" class="submit-btn" onclick="storeUsername()">Log in</button>
-                </form>
-            </div>
+<!-- Main Content -->
+<main>
+    <div class="hero">
+        <div class="form-box" style="margin-bottom: 10px;">
+            <h2 style="text-align: center; margin-bottom: 0px;">Choose User</h2> <!-- Title indicating to choose user -->
+            <!-- Dropdown menu for user roles -->
+            <form action="/myapp/LoginBoundary" method="post" id="login" class="input-group" style="margin-top: -100px;">
+                <select id="userRole" class="input-field" style="display: block;">
+                    <option value="Buyer">Buyer</option>
+                    <option value="Seller">Seller</option>
+                    <option value="RealEstateAgent">Real Estate Agent</option>
+                    <option value="SystemAdmin">System Admin</option>
+                </select>
+                <input id="username" name="username" type="text" class="input-field" placeholder="User Id" required>
+                <input id="password" name="password" type="password" class="input-field" placeholder="Enter Password" required>
+                <button type="submit" class="submit-btn" onclick="storeUsername()">Log in</button>
+            </form>
         </div>
-    </main>
+    </div>
+</main>
+
+
 
     <!-- Footer -->
     <footer>
