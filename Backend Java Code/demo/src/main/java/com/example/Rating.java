@@ -25,20 +25,24 @@ public class Rating {
     }
 
     //controller boundary to be created
-    public void addRating(String username, Double rating) {
-        Document newRating = new Document("username", username)
-            .append("rating", rating);
-        collection.insertOne(newRating);
+    public void addRating(String name, Integer rating) {
+        collection.updateOne(
+            Filters.eq("name", name), 
+            Updates.push("ratings", rating)
+        );
     }
 
     public Double getAverageRating(String username) {
-        List<Document> ratings = collection.find(Filters.eq("username", username)).into(new ArrayList<>());
-        if (!ratings.isEmpty()) {
-            double sum = 0;
-            for (Document rating : ratings) {
-                sum += rating.getDouble("rating");
+        Document user = collection.find(Filters.eq("username", username)).first();
+        if (user != null) {
+            List<Integer> ratings = (List<Integer>) user.get("ratings");
+            if (ratings != null && !ratings.isEmpty()) {
+                double sum = 0;
+                for (Integer rating : ratings) {
+                    sum += rating;
+                }
+                return sum / ratings.size();
             }
-            return sum / ratings.size();
         }
         return null;
     }

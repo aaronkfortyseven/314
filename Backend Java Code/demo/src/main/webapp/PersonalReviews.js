@@ -111,7 +111,7 @@ async function addRating() {
 
     const newRating = {
         name: name,
-        rating: parseFloat(ratingValue),
+        rating: parseInt(ratingValue),
     };
 
     console.log(`Adding rating for agent: ${name}`); // Log the agent's name

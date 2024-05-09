@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.bson.Document;
 import java.io.IOException;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 @WebServlet("/myapp/CreateRatingBoundary")
 public class CreateRatingBoundary extends HttpServlet {
@@ -16,11 +17,11 @@ public class CreateRatingBoundary extends HttpServlet {
     public CreateRatingBoundary() {
         this.createRatingController = new CreateRatingController();
     }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-        Double rating = Double.parseDouble(request.getParameter("rating"));
-
-        createRatingController.createRating(username, rating);
+        JsonObject json = new Gson().fromJson(request.getReader(), JsonObject.class);
+        String name = json.get("name").getAsString();
+        Integer rating = json.get("rating").getAsInt();
+    
+        createRatingController.createRating(name, rating);
     }
 }
