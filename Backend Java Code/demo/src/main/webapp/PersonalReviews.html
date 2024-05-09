@@ -26,29 +26,42 @@
 
     <!-- Main Content -->
     <main>
-    <section>
+
+<section>
 <!-- Agent Reviews -->
-<div class="agent-reviews">
-    <h2>Agent Reviews. See reviews for agent_user(John), agent_user2(Emma) or agent_user3(Michael)!</h2>
-    <input type="text" id="searchBar" placeholder="Search for an agent">
-    <button id="searchButton">Search</button>
-    <div id="averageRating"></div>
-    <div id="reviews"></div>
+    <div class="agent-reviews">
+        <h2>Agent Reviews. See reviews for agent_user(John), agent_user2(Emma) or agent_user3(Michael)!</h2><br>
+        <input type="text" id="searchBar" placeholder="Search for an agent">
+        <button id="searchButton">Search</button>
+        <div id="averageRating"></div><br>
+        <div id="reviews"></div>
     </div>
 </section>
 
-<!-- ADD a review-->
 <section>
-    <h2>Leave a Review</h2>
+    <h2>Leave a review and rating for your agent.</h2><br>
     <form id="reviewForm">
         <label for="agentName">Agent's name:</label>
         <input id="agentName" type="text"><br>
         <label for="reviewText">Your review:</label>
-        <textarea id="reviewText"></textarea>
+        <textarea id="reviewText"></textarea><br>
 
-        <button type="submit" id="addReviewButton">Submit Review</button>
+        <button type="submit" id="addReviewButton">Submit Review</button><br>
     </form>
-</section>
+        
+    <form id="ratingForm" onsubmit="event.preventDefault(); addRating();">
+        <div class="rating">
+            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Poor">1 star</label>
+            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Fair">2 stars</label>
+            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Good">3 stars</label>
+            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Very Good">4 stars</label>
+            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding">5 stars</label>
+        </div>
+        <input type="submit" value="Submit Rating"><br><br>
+    </form>
+    </section>
+
+
     <div id="dashboard" class="dashboard"></div>
     <script src="PersonalReviews.js"></script>
 <style>
@@ -65,6 +78,9 @@
     /* Styles for the reviews section */
     background-color: #fff;
     padding: 10px;
+    clear: both;
+    max-height: 500px; /* Adjust this value as needed */
+    overflow: auto;
 }
 
 .review {

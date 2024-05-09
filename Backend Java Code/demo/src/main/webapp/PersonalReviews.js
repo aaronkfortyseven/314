@@ -20,6 +20,24 @@ async function fetchReviews(username) {
 }
 
 // DISPLAY
+async function displayAverageRating(username) {
+    const dashboard = document.getElementById('averageRating');
+    dashboard.innerHTML = ''; // Clear existing content
+    
+    const averageRating = await fetchAverageRating(username);
+
+    if (averageRating === null) {
+        dashboard.textContent = 'No average rating retrieved.';
+        return;
+    }
+
+    const ratingDiv = document.createElement('div');
+    ratingDiv.className = 'averageRating';
+    ratingDiv.textContent = `Average Rating: ${averageRating.toFixed(2)}`; // Display the average rating
+    dashboard.appendChild(ratingDiv); // Append the div to the dashboard
+}
+
+// DISPLAY
 async function displayReviews(filteredReviews = null) {
     const dashboard = document.getElementById('reviews');
     dashboard.innerHTML = ''; // Clear existing content
@@ -46,23 +64,7 @@ async function fetchAverageRating(username) {
     return averageRating;
 }
 
-// DISPLAY
-async function displayAverageRating(username) {
-    const dashboard = document.getElementById('averageRating');
-    dashboard.innerHTML = ''; // Clear existing content
-    
-    const averageRating = await fetchAverageRating(username);
 
-    if (averageRating === null) {
-        dashboard.textContent = 'No average rating retrieved.';
-        return;
-    }
-
-    const ratingDiv = document.createElement('div');
-    ratingDiv.className = 'averageRating';
-    ratingDiv.textContent = `Average Rating: ${averageRating.toFixed(2)}`; // Display the average rating
-    dashboard.appendChild(ratingDiv); // Append the div to the dashboard
-}
 
 // SHOW ADD REVIEW FORM
 function showAddReviewForm() {
@@ -99,6 +101,35 @@ async function addReview() {
         alert('Review added successfully.');
     } else {
         alert('Failed to add review.');
+    }
+}
+
+
+async function addRating() {
+    const ratingValue = document.querySelector('input[name="rating"]:checked').value;
+    const name = document.getElementById('agentName').value;
+
+    const newRating = {
+        name: name,
+        rating: parseFloat(ratingValue),
+    };
+
+    console.log(`Adding rating for agent: ${name}`); // Log the agent's name
+
+    const response = await fetch(`/myapp/CreateRatingBoundary`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newRating),
+    });
+
+    if (response.ok) {
+        console.log('Rating added successfully.');
+        document.getElementById('ratingForm').reset();
+        alert('Rating added successfully.');
+    } else {
+        alert('Failed to add rating.');
     }
 }
 
