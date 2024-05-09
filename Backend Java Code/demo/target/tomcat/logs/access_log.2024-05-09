@@ -10,3 +10,9 @@
 0:0:0:0:0:0:0:1 - - [09/May/2024:17:42:13 +0800] "GET /myapp/ViewPropertyBoundary?username=example_user2 HTTP/1.1" 200 14 http-bio-8080-exec-10 4
 0:0:0:0:0:0:0:1 - - [09/May/2024:17:42:14 +0800] "GET /myapp/ViewPropertyBoundary?username=example_user2 HTTP/1.1" 200 14 http-bio-8080-exec-10 5
 0:0:0:0:0:0:0:1 - - [09/May/2024:17:42:15 +0800] "GET /login.jsp HTTP/1.1" 200 2690 http-bio-8080-exec-10 2
+0:0:0:0:0:0:0:1 - - [09/May/2024:17:45:29 +0800] "GET /myapp/ViewPropertyBoundary?username=example_user2 HTTP/1.1" 200 14 http-bio-8080-exec-5 4
+0:0:0:0:0:0:0:1 - - [09/May/2024:17:47:24 +0800] "GET /SellerDash.html HTTP/1.1" 304 - http-bio-8080-exec-7 14
+0:0:0:0:0:0:0:1 - - [09/May/2024:17:47:24 +0800] "GET /SellerDash.js HTTP/1.1" 200 2858 http-bio-8080-exec-7 5
+0:0:0:0:0:0:0:1 - - [09/May/2024:17:47:25 +0800] "GET /myapp/ViewPropertyBoundary?username=null HTTP/1.1" 200 12 http-bio-8080-exec-7 8
+0:0:0:0:0:0:0:1 - - [09/May/2024:17:47:25 +0800] "GET /myapp/ViewPropertyBoundary?username=null HTTP/1.1" 200 12 http-bio-8080-exec-7 3
+0:0:0:0:0:0:0:1 - - [09/May/2024:17:47:27 +0800] "GET /myapp/ViewPropertyBoundary?username=null HTTP/1.1" 200 12 http-bio-8080-exec-7 3
