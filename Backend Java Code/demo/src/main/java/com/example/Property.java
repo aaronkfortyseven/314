@@ -48,4 +48,14 @@ public class Property {
             new Document("$set", updatedProperty)
         );
     }
+
+//viewALLproperties page
+    public List<Document> getAllProperties() {
+        List<Document> properties = new ArrayList<>();
+        FindIterable<Document> documents = collection.find();
+        for (Document document : documents) {
+            properties.add(document);
+        }
+        return properties;
+    }
 }

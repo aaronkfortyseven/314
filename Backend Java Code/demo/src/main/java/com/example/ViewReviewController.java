@@ -1,31 +1,13 @@
 package com.example;
 
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoClient;
-import com.mongodb.ConnectionString;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import java.util.List;
 import java.util.ArrayList;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
+
 
 public class ViewReviewController {
-    private MongoCollection<Document> collection;
-
-    public ViewReviewController() {
-        ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
-        MongoClient mongoClient = MongoClients.create(connectionString);
-        MongoDatabase database = mongoClient.getDatabase("314_db");
-        this.collection = database.getCollection("users");
-    }
-
-    public List<Document> execute(String username) {
-        Document user = collection.find(new Document("username", username)).first();
-        if (user != null) {
-            return (List<Document>) user.get("reviews");
-        }
-        return new ArrayList<>();
+    public List<Document> viewReview(String username) {
+        User user = new User();
+        return user.getReviews(username);
     }
 }

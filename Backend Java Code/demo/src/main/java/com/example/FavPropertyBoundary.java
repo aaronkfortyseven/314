@@ -1,3 +1,5 @@
+package com.example;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +21,6 @@ public class FavPropertyBoundary extends HttpServlet {
         String username = request.getParameter("username");
         Document favProperty = new Gson().fromJson(request.getReader(), Document.class);
 
-        favPropertyController.execute(username, favProperty);
+        favPropertyController.favProperty(username, favProperty);
     }
 }

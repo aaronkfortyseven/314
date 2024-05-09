@@ -32,7 +32,8 @@ public class User {
         this.role = role;
     }
 
-    //methods
+
+//LOGIN ENTITY
 
     public User login(String username, String password) {
         MongoCollection<Document> collection = database.getCollection("users");
@@ -58,29 +59,51 @@ public class User {
         return this.role;
     }
 
-    //ViewPropertyController method
-    public List<Document> getListings(String username) {
+
+
+
+//RATING ENTITY
+
+    public Double getAverageRating(String username) {
         Document user = collection.find(new Document("username", username)).first();
         if (user != null) {
-            return (List<Document>) user.get("listings");
+            Number averageRating = (Number) user.get("averageRating");
+            return averageRating.doubleValue();
+        }
+        return null;
+    }
+
+
+
+//REVIEW ENTITY
+
+    public List<Document> getReviews(String username) {
+        Document user = collection.find(new Document("username", username)).first();
+        if (user != null) {
+            return (List<Document>) user.get("reviews");
         }
         return new ArrayList<>();
     }
 
-    //CreatePropertyController method
-    public void addProperty(String username, Document newProperty) {
+    public void addReview(String name, Document newReview) {
+        String reviewText = newReview.getString("review");
         collection.updateOne(
-            Filters.eq("username", username), 
-            Updates.push("listings", newProperty)
+            Filters.eq("name", name), 
+            Updates.push("reviews", reviewText)
         );
     }
-    //RemovePropertyController method
-    public void deleteProperty(String username, String propertyTitle) {
+
+
+//FAVPROPERTY ENTITY
+
+    public void addFavProperty(String username, Document favProperty) {
         collection.updateOne(
             Filters.eq("username", username), 
-            Updates.pull("listings", new Document("title", propertyTitle))
+            Updates.push("favProperties", favProperty)
         );
     }
+
+
 
 }
 

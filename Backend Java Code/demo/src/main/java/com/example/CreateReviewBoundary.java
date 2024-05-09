@@ -1,3 +1,5 @@
+package com.example;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +21,6 @@ public class CreateReviewBoundary extends HttpServlet {
         Document newReview = new Gson().fromJson(request.getReader(), Document.class);
         String name = newReview.getString("name");
     
-        createReviewController.execute(name, newReview);
+        createReviewController.createReview(name, newReview);
     }
 }

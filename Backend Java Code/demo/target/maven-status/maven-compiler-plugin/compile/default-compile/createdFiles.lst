@@ -1,9 +1,9 @@
 com/example/UpdatePropertyController.class
-CreateReviewBoundary.class
+com/example/FavPropertyController.class
 com/example/Property.class
 com/example/CreatePropertyController.class
 com/example/CreatePropertyBoundary.class
-FavPropertyController.class
+com/example/FavPropertyBoundary.class
 com/example/UpdatePropertyBoundary.class
-CreateReviewController.class
-FavPropertyBoundary.class
+com/example/CreateReviewController.class
+com/example/CreateReviewBoundary.class
