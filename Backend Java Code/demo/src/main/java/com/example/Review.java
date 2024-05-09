@@ -14,6 +14,7 @@ import com.mongodb.client.FindIterable;
 import java.util.stream.StreamSupport;
 import java.util.stream.Collectors;
 
+
 public class Review {
     private MongoCollection<Document> collection;
 

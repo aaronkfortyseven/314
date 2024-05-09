@@ -1,16 +1,29 @@
 //current session's username
 const username = sessionStorage.getItem('username');
 
-// change to search by name 7 may maybe just do it via front end drop down,
-// where if they select john, username = agent_user
+const nameToUsername = {
+    "John": "agent_user",
+    "Emma": "agent_user2",
+    "Michael": "agent_user3",
+};
+
 document.getElementById('searchButton').addEventListener('click', async () => {
-    const searchUsername = document.getElementById('searchBar').value;
-    if (searchUsername) {
+    const searchName = document.getElementById('searchBar').value;
+    if (searchName && searchName in nameToUsername) {
+        const searchUsername = nameToUsername[searchName];
         const reviews = await fetchReviews(searchUsername);
         displayReviews(reviews);
         displayAverageRating(searchUsername);
     }
 });
+// document.getElementById('searchButton').addEventListener('click', async () => {
+//     const searchUsername = document.getElementById('searchBar').value;
+//     if (searchUsername) {
+//         const reviews = await fetchReviews(searchUsername);
+//         displayReviews(reviews);
+//         displayAverageRating(searchUsername);
+//     }
+// });
 
 // FETCH from the server
 async function fetchReviews(username) {
