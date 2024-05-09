@@ -20,7 +20,7 @@ public class ViewAllBoundary extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Document> properties = viewAllController.execute();
+        List<Document> properties = viewAllController.viewAll();
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print(new Gson().toJson(properties));

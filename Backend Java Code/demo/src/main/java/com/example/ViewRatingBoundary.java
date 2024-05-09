@@ -23,7 +23,7 @@ public class ViewRatingBoundary extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
 
-        Double averageRating = viewRatingController.execute(username);
+        Double averageRating = viewRatingController.viewRating(username);
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print(new Gson().toJson(averageRating));

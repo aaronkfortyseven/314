@@ -21,9 +21,8 @@ public class RemovePropertyBoundary extends HttpServlet {
     }
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
         String propertyTitle = request.getParameter("propertyTitle");
 
-        removePropertyController.execute(username, propertyTitle);
+        removePropertyController.removeProperty(propertyTitle);
     }
 }

@@ -1,3 +1,5 @@
+package com.example;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +21,6 @@ public class CreatePropertyBoundary extends HttpServlet {
         String username = request.getParameter("username");
         Document newProperty = new Gson().fromJson(request.getReader(), Document.class);
 
-        createPropertyController.execute(username, newProperty);
+        createPropertyController.createProperty(username, newProperty);
     }
 }

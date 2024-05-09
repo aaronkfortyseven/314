@@ -1,3 +1,5 @@
+package com.example;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +22,6 @@ public class UpdatePropertyBoundary extends HttpServlet {
         String propertyTitle = request.getParameter("propertyTitle");
         Document updatedProperty = new Gson().fromJson(request.getReader(), Document.class);
 
-        updatePropertyController.execute(username, propertyTitle, updatedProperty);
+        updatePropertyController.updateProperty(username, propertyTitle, updatedProperty);
     }
 }

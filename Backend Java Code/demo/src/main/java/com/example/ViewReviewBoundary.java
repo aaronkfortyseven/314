@@ -23,7 +23,7 @@ public class ViewReviewBoundary extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
 
-        List<Document> properties = viewReviewController.execute(username);
+        List<Document> properties = viewReviewController.viewReview(username);
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print(new Gson().toJson(properties));
