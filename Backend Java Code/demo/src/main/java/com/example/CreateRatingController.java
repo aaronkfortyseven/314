@@ -1,8 +1,8 @@
 package com.example;
 
 public class CreateRatingController {
-    public void createRating(String username, Double rating) {
+    public void createRating(String name, Integer rating) {
         Rating ratingObj = new Rating();
-        ratingObj.addRating(username, rating);
+        ratingObj.addRating(name, rating);
     }
 }
