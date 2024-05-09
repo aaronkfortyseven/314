@@ -23,7 +23,6 @@ async function searchProperties() {
 }
 
 // DISPLAY
-// DISPLAY
 async function displayProperties(filteredProperties = null) {
     console.log('displayProperties called');
     const dashboard = document.getElementById('dashboard');
@@ -55,7 +54,6 @@ function createPropertyElement(property) {
 }
 
 
-
 function logout() {
     //clears session username
     sessionStorage.removeItem('username');
@@ -67,10 +65,18 @@ document.getElementById('logoutBtn').addEventListener('click', logout);
 
 document.getElementById('searchBtn').addEventListener('click', searchProperties);
 
-document.getElementById('viewAllPropertiesBtn').addEventListener('click', function() {
-    displayProperties();
+document.getElementById('viewAllPropertiesBtn').addEventListener('click', async function() {
+    await displayProperties(); // Fetch and display all properties
 });
 
-document.getElementById('reviewsBtn').addEventListener('click', function() {
-    window.location.href = 'PersonalReviews.html';
+document.getElementById('viewListingsBtn').addEventListener('click', async function() {
+    // Implement functionality to view user's own listings
+});
+
+document.getElementById('viewAgentsBtn').addEventListener('click', async function() {
+    // Implement functionality to view agents
+});
+
+document.getElementById('viewPropertyTypesBtn').addEventListener('click', async function() {
+    // Implement functionality to view types of properties sold
 });
