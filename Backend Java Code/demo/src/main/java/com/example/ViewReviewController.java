@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ViewReviewController {
     public List<Document> viewReview(String username) {
-        User user = new User();
-        return user.getReviews(username);
+        Review review = new Review();
+        return review.getReviews(username);
     }
 }
