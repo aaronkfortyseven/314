@@ -23,6 +23,7 @@ async function searchProperties() {
 }
 
 // DISPLAY
+// DISPLAY
 async function displayProperties(filteredProperties = null) {
     console.log('displayProperties called');
     const dashboard = document.getElementById('dashboard');
@@ -31,20 +32,28 @@ async function displayProperties(filteredProperties = null) {
     const properties = filteredProperties ? filteredProperties : await fetchProperties();
 
     properties.forEach(property => {
-        const propertyDiv = document.createElement('div');
-        propertyDiv.classList.add('property');
-
-        propertyDiv.innerHTML = `
-            <h2>${property.title}</h2>
-            <p>Description: ${property.description}</p>
-            <p>Price: ${property.price}</p>
-            <p>Status: ${property.status}</p>
-            <button onclick="removeProperty('${property.title}')">Remove from saved</button>
-        `;
-
+        const propertyDiv = createPropertyElement(property);
         dashboard.appendChild(propertyDiv);
     });
 }
+
+function createPropertyElement(property) {
+    const propertyDiv = document.createElement('div');
+    propertyDiv.classList.add('property');
+
+    propertyDiv.innerHTML = `
+        <h2>${property.title}</h2>
+        <p>Description: ${property.description}</p>
+        <p>Location: ${property.location}</p>
+        <p>Size: ${property.size}</p>
+        <p>Price: ${property.price}</p>
+        <p>Status: ${property.status}</p>
+        <button onclick="removeProperty('${property.title}')">Remove from saved</button>
+    `;
+
+    return propertyDiv;
+}
+
 
 
 function logout() {
