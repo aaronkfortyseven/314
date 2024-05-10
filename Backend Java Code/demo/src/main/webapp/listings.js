@@ -3,7 +3,7 @@ const username = sessionStorage.getItem('username');
 
 // FETCH from the server
 async function fetchProperties() {
-    const response = await fetch(`/myapp/ViewAllBoundary`); // Removed username from the URL
+    const response = await fetch(`/myapp/ViewAllBoundary`);
     const properties = await response.json();
     console.log(properties);
     return properties;
@@ -12,8 +12,17 @@ async function fetchProperties() {
 // SEARCH
 async function searchProperties() {
     const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
+    const statusValue = document.getElementById('toggleStatus').value;
     const properties = await fetchProperties();
-    const filteredProperties = properties.filter(property => property.title.trim().toLowerCase().includes(searchValue));
+    let filteredProperties = properties;
+
+    if (searchValue) {
+        filteredProperties = filteredProperties.filter(property => property.title.trim().toLowerCase().includes(searchValue));
+    }
+
+    if (statusValue) {
+        filteredProperties = filteredProperties.filter(property => property.status === statusValue);
+    }
     
     if (filteredProperties.length > 0) {
         displayProperties(filteredProperties); // Display only the found properties
@@ -68,26 +77,22 @@ async function addToFavourites(property) {
     }
 }
 
-displayProperties();
-
-
 document.addEventListener('DOMContentLoaded', (event) => {
-    console.log('Search button called');
+    console.log('DOMContentLoaded event fired'); 
+
+    // Add event listeners
     document.getElementById('searchBtn').addEventListener('click', searchProperties);
+    document.getElementById('toggleStatus').addEventListener('change', searchProperties);
 });
 
-
-//reusable code for login and back to dashboard replacing each other. 
+// Handle login and back to dashboard
 document.addEventListener('DOMContentLoaded', (event) => {
     const username = sessionStorage.getItem('username');
     if (username) {
         document.getElementById('backToDashboard').style.display = 'inline';
-    }
-});
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const username = sessionStorage.getItem('username');
-    if (username) {
         document.getElementById('loginLink').style.display = 'none';
     }
 });
+
+
+displayProperties();

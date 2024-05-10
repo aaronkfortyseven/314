@@ -35,9 +35,15 @@
         <input type="text" id="searchInput" placeholder="Search by property title...">
         <button id="searchBtn">Search</button>
     </div>
+
+    <select id="toggleStatus">
+        <option value="">All</option>
+        <option value="For Sale">For Sale</option>
+        <option value="Sold">Sold</option>
+    </select>
     
     <div id="dashboard" class="dashboard"></div>
-    <script src='listings.js'></script>
+    
 
     <div class="property">
         <h2>${property.title}</h2>
@@ -47,7 +53,7 @@
         <button class="favourite-btn">❤️</button>
     </div>
 
- 
+    <script src='listings.js'></script>
     </main>
 
     <!-- Footer -->
