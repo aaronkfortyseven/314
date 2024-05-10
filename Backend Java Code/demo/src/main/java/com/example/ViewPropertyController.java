@@ -11,3 +11,4 @@ public class ViewPropertyController {
         return property.getPropertyByAgent(username);
     }
 }
+

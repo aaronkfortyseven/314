@@ -75,23 +75,16 @@ public class User {
 
 
 
-//REVIEW ENTITY
+//view Favourites
 
-    public List<Document> getReviews(String username) {
+    public List<Document> getFavourites(String username) {
         Document user = collection.find(new Document("username", username)).first();
         if (user != null) {
-            return (List<Document>) user.get("reviews");
+            return (List<Document>) user.get("favProperties");
         }
         return new ArrayList<>();
     }
 
-    public void addReview(String name, Document newReview) {
-        String reviewText = newReview.getString("review");
-        collection.updateOne(
-            Filters.eq("name", name), 
-            Updates.push("reviews", reviewText)
-        );
-    }
 
 
 //FAVPROPERTY ENTITY

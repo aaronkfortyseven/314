@@ -72,6 +72,17 @@ async function removeProperty(title) {
     }
 }
 
+// FETCH favourites from the server
+async function fetchFavourites() {
+    const response = await fetch(`/myapp/ViewFavouriteBoundary?username=${username}`);
+    const favourites = await response.json();
+    console.log(favourites);
+    return favourites;
+}
+async function displayFavourites() {
+    const favourites = await fetchFavourites();
+    displayProperties(favourites);
+}
 
 
 function logout() {
@@ -85,8 +96,8 @@ document.getElementById('logoutBtn').addEventListener('click', logout);
 
 document.getElementById('searchBtn').addEventListener('click', searchProperties);
 
-document.getElementById('viewAllPropertiesBtn').addEventListener('click', function() {
-    displayProperties();
+document.getElementById('viewFavBtn').addEventListener('click', function() {
+    displayFavourites();
 });
 
 document.getElementById('reviewsBtn').addEventListener('click', function() {

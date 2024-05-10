@@ -4,10 +4,12 @@ com/example/Property.class
 com/example/Rating.class
 com/example/CreatePropertyController.class
 com/example/UpdatePropertyBoundary.class
+com/example/ViewFavouriteBoundary.class
 com/example/CreateReviewController.class
 com/example/CreateReviewBoundary.class
 com/example/UpdatePropertyController.class
 com/example/Review.class
 com/example/CreatePropertyBoundary.class
 com/example/FavPropertyBoundary.class
+com/example/ViewFavouriteController.class
 com/example/CreateRatingController.class
