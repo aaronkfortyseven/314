@@ -31,26 +31,59 @@ async function displayProperties(filteredProperties = null) {
     const properties = filteredProperties ? filteredProperties : await fetchProperties();
 
     properties.forEach(property => {
-        const propertyDiv = createPropertyElement(property);
+        const propertyDiv = document.createElement('div');
+        propertyDiv.classList.add('property');
+
+        propertyDiv.innerHTML = `
+            <h2>${property.title}</h2>
+            <p>Description: ${property.description}</p>
+            <p>Price: ${property.price}</p>
+            <p>Status: ${property.status}</p>
+            <p>Views: ${property.views}</p>
+            <p>Shortlisted: ${property.shortlisted}</p>
+            <button onclick="removeProperty('${property.title}')">Remove from saved</button>
+        `;
+
         dashboard.appendChild(propertyDiv);
     });
 }
 
-function createPropertyElement(property) {
-    const propertyDiv = document.createElement('div');
-    propertyDiv.classList.add('property');
+// REMOVE
+async function removeProperty(title) {
+    const confirmed = confirm("Are you sure you want to remove this property?");
+    if (confirmed) {
+        try {
+            const response = await fetch(`/myapp/RemovePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
+                method: 'DELETE',
+            });
 
-    propertyDiv.innerHTML = `
-        <h2>${property.title}</h2>
-        <p>Description: ${property.description}</p>
-        <p>Location: ${property.location}</p>
-        <p>Size: ${property.size}</p>
-        <p>Price: ${property.price}</p>
-        <p>Status: ${property.status}</p>
-        <button onclick="removeProperty('${property.title}')">Remove from saved</button>
-    `;
+            if (response.ok) {
+                const propertyDivs = document.querySelectorAll('.property');
+                propertyDivs.forEach(propertyDiv => {
+                    const propertyTitle = propertyDiv.querySelector('h2').textContent;
+                    if (propertyTitle === title) {
+                        propertyDiv.remove();
+                    }
+                });
+            } else {
+                throw new Error('Failed to remove property.');
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    }
+}
 
-    return propertyDiv;
+// FETCH favourites from the server
+async function fetchFavourites() {
+    const response = await fetch(`/myapp/ViewFavouriteBoundary?username=${username}`);
+    const favourites = await response.json();
+    console.log(favourites);
+    return favourites;
+}
+async function displayFavourites() {
+    const favourites = await fetchFavourites();
+    displayProperties(favourites);
 }
 
 
@@ -65,18 +98,13 @@ document.getElementById('logoutBtn').addEventListener('click', logout);
 
 document.getElementById('searchBtn').addEventListener('click', searchProperties);
 
-document.getElementById('viewAllPropertiesBtn').addEventListener('click', async function() {
-    await displayProperties(); // Fetch and display all properties
+document.getElementById('viewFavBtn').addEventListener('click', function() {
+    displayFavourites();
 });
 
-document.getElementById('viewListingsBtn').addEventListener('click', async function() {
-    // Implement functionality to view user's own listings
+document.getElementById('reviewsBtn').addEventListener('click', function() {
+    window.location.href = 'PersonalReviews.html';
 });
 
-document.getElementById('viewAgentsBtn').addEventListener('click', async function() {
-    // Implement functionality to view agents
-});
 
-document.getElementById('viewPropertyTypesBtn').addEventListener('click', async function() {
-    // Implement functionality to view types of properties sold
-});
+
