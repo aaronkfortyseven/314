@@ -7,15 +7,25 @@ async function fetchUsers() {
 }
 
 // SEARCH
+async function searchUsers() {
+    const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
+    const users = await fetchUsers();
+    const filteredUsers = users.filter(user => user.username.trim().toLowerCase().includes(searchValue));
+    
+    if (filteredUsers.length > 0) {
+        displayUsers(filteredUsers); // Display only the found users
+    } else {
+        alert("User not found.");
+    }
+}
 
 
-// DISPLAY
-async function displayUsers() {
+async function displayUsers(filteredUsers = null) {
     console.log('displayUsers called');
     const dashboard = document.getElementById('dashboard');
     dashboard.innerHTML = ''; // Clear existing content
     
-    const users = await fetchUsers();
+    const users = filteredUsers ? filteredUsers : await fetchUsers();
 
     users.forEach(user => {
         const userDiv = document.createElement('div');
@@ -28,7 +38,6 @@ async function displayUsers() {
             <button onclick="showUpdateUserForm('${user.username}')">Update</button>
             <button onclick="suspendUser('${user.username}')">Suspend</button>
             <button onclick="unsuspendUser('${user.username}')">Unsuspend</button>
-            
         `;
 
         dashboard.appendChild(userDiv);
@@ -164,3 +173,5 @@ document.getElementById('addUserSubmitButton').addEventListener('click', functio
 });
 
 document.getElementById('viewUsersBtn').addEventListener('click', displayUsers);
+
+document.getElementById('searchAccBtn').addEventListener('click', searchUsers);
