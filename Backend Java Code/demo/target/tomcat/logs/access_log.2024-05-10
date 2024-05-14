@@ -260,3 +260,5 @@
 0:0:0:0:0:0:0:1 - - [10/May/2024:22:59:29 +0800] "GET /SellerDash.html HTTP/1.1" 304 - http-bio-8080-exec-9 11
 0:0:0:0:0:0:0:1 - - [10/May/2024:22:59:29 +0800] "GET /SellerDash.js HTTP/1.1" 200 3648 http-bio-8080-exec-9 38
 0:0:0:0:0:0:0:1 - - [10/May/2024:22:59:31 +0800] "GET /myapp/ViewFavouriteBoundary?username=example_user2 HTTP/1.1" 200 936 http-bio-8080-exec-9 116
+0:0:0:0:0:0:0:1 - - [10/May/2024:23:27:13 +0800] "GET /listings.html HTTP/1.1" 304 - http-bio-8080-exec-4 62
+0:0:0:0:0:0:0:1 - - [10/May/2024:23:27:14 +0800] "GET /myapp/ViewAllBoundary HTTP/1.1" 200 3413 http-bio-8080-exec-4 439
