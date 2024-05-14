@@ -16,14 +16,7 @@ document.getElementById('searchButton').addEventListener('click', async () => {
         displayAverageRating(searchUsername);
     }
 });
-// document.getElementById('searchButton').addEventListener('click', async () => {
-//     const searchUsername = document.getElementById('searchBar').value;
-//     if (searchUsername) {
-//         const reviews = await fetchReviews(searchUsername);
-//         displayReviews(reviews);
-//         displayAverageRating(searchUsername);
-//     }
-// });
+
 
 // FETCH from the server
 async function fetchReviews(username) {

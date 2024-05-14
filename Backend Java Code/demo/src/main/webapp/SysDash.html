@@ -12,6 +12,7 @@
         <button id="logoutBtn">Logout</button>
     </header>
 
+    
     <main>
         <section id="userManagement">
             <h2>User Management</h2>
@@ -21,10 +22,51 @@
             </div>
             <button id="createUserBtn">Create User</button>
             <button id="viewUsersBtn">View Users</button>
-            <button id="suspendUserBtn">Suspend User</button>
-            <button id="updateUserBtn">Update User</button>
             <div id="userList"></div> <!-- Add this line to display user accounts -->
+            
+        <!-- User Add Form -->
+        <br>
+        <form id="addUserForm" style="display: none;">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br>
+
+            <label for="role">Role:</label>
+            <select id="role">
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
+                <option value="agent">Agent</option>
+            </select>
+            <br>
+
+            <input id="addUserSubmitButton" type="submit" value="Add User">
+        </form>
+
+        <form id="updateUserForm" style="display: none;">
+            <label for="updateUsername">Username:</label>
+            <input type="text" id="updateUsername" name="username"><br>
+        
+            <label for="updatePassword">Password:</label>
+            <input type="password" id="updatePassword" name="password"><br>
+        
+            <label for="updateRole">Role:</label>
+            <select id="updateRole">
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
+                <option value="agent">Agent</option>
+            </select>
+            <br>
+        
+            <input id="updateUserSubmitButton" type="submit" value="Update User">
+        </form>
+
+        <div id="dashboard" class="dashboard"></div>
+
         </section>
+
+
         
         <section id="userProfileManagement">
             <h2>User Profile Management</h2>
@@ -34,8 +76,6 @@
             </div>
             <button id="createProfileBtn">Create Profile</button>
             <button id="viewProfilesBtn">View Profiles</button>
-            <button id="suspendProfileBtn">Suspend Profile</button>
-            <button id="updateProfileBtn">Update Profile</button>
             <div id="profileList"></div> <!-- Add this line to display user profiles -->
         </section>
         <script src="SysDash.js"></script>

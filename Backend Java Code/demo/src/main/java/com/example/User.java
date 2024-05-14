@@ -10,13 +10,18 @@ import java.util.List;
 import java.util.ArrayList;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.UpdateResult;
+import org.bson.conversions.Bson;
+import com.mongodb.client.FindIterable;
 
 public class User {
     private String username;
     private String password;
     private String role;
+    private boolean suspended;
     private MongoClient mongoClient;
     private MongoDatabase database;
+    private ArrayList<String> favProperties;
     private MongoCollection<Document> collection;
 
     public User() {
@@ -30,10 +35,32 @@ public class User {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.favProperties = new ArrayList<>();
+    }
+    public User(String username, String password, String role, boolean suspended) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.suspended = suspended;
     }
 
 
 //LOGIN ENTITY
+
+    // public User login(String username, String password) {
+    //     MongoCollection<Document> collection = database.getCollection("users");
+
+    //     // Check if the login is successful
+    //     Document user = collection.find(new Document("username", username)).first();
+    //     if (user != null) {
+    //         String dbPassword = user.getString("password");
+    //         String role = user.getString("role");
+    //         if (dbPassword.equals(password)) {
+    //             return new User(username, password, role);
+    //         }
+    //     }
+    //     return null;
+    // }
 
     public User login(String username, String password) {
         MongoCollection<Document> collection = database.getCollection("users");
@@ -43,12 +70,15 @@ public class User {
         if (user != null) {
             String dbPassword = user.getString("password");
             String role = user.getString("role");
-            if (dbPassword.equals(password)) {
-                return new User(username, password, role);
+            boolean suspended = user.getBoolean("suspended");
+            if (dbPassword.equals(password) && !suspended) {
+                return new User(username, password, role, suspended);
             }
         }
         return null;
     }
+
+
 
     // getters and setters
     public String getUsername() {
@@ -74,7 +104,6 @@ public class User {
     }
 
 
-
 //view Favourites
 
     public List<Document> getFavourites(String username) {
@@ -84,7 +113,6 @@ public class User {
         }
         return new ArrayList<>();
     }
-
 
 
 //FAVPROPERTY ENTITY
@@ -97,8 +125,65 @@ public class User {
     }
 
 
+//SysAdmin Functionality
+    public void addUser(Document newUser) {
+        collection.insertOne(newUser);
+    }
+
+    public List<Document> getAllUsers() {
+        List<Document> users = new ArrayList<>();
+        FindIterable<Document> documents = collection.find();
+        for (Document document : documents) {
+            users.add(document);
+        }
+        return users;
+    }
+
+    public void editUser(String username, Document updatedUser) {
+        collection.updateOne(
+            Filters.eq("username", username),
+            new Document("$set", updatedUser)
+        );
+    }
+
+    public boolean isSuspended() {
+        return this.suspended;
+    }
+
+    public boolean suspend(String username) {
+        MongoCollection<Document> collection = database.getCollection("users");
+    
+        Bson filter = Filters.eq("username", username);
+        Bson update = Updates.set("suspended", true);
+    
+        UpdateResult result = collection.updateOne(filter, update);
+    
+        return result.getModifiedCount() > 0;
+    }
+
+    public boolean unsuspend(String username) {
+        MongoCollection<Document> collection = database.getCollection("users");
+    
+        Bson filter = Filters.eq("username", username);
+        Bson update = Updates.set("suspended", false);
+    
+        UpdateResult result = collection.updateOne(filter, update);
+    
+        return result.getModifiedCount() > 0;
+    }
+
+
+
+
+
+
+
 
 }
+
+
+
+
 
 
 

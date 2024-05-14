@@ -33,12 +33,13 @@ public class LoginBoundary extends HttpServlet {
                 response.sendRedirect("/SellerDash.html");
             } else if ("sys admin".equals(role)) {
                 response.sendRedirect("/SysDash.html");
-            }  else {
-            // Login failed
-            HttpSession session = request.getSession();
-            session.setAttribute("loginError", "true");
-            response.sendRedirect("/login.jsp");
-            }
+            }  
+            //else {
+            // // Login failed
+            // HttpSession session = request.getSession();
+            // session.setAttribute("loginError", "true");
+            // response.sendRedirect("/login.jsp");
+            // }
         } else {
             // Login failed
             HttpSession session = request.getSession();

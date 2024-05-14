@@ -1,50 +1,148 @@
-//current session's username
-const username = sessionStorage.getItem('username');
-
 // FETCH from the server
-async function fetchProperties() {
-    const response = await fetch(`/myapp/ViewPropertyBoundary?username=${username}`);
-    const properties = await response.json();
-    console.log(properties);
-    return properties;
+async function fetchUsers() {
+    const response = await fetch(`/myapp/ViewUserBoundary`);
+    const users = await response.json();
+    console.log(users);
+    return users;
 }
 
 // SEARCH
-async function searchProperties() {
-    const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
-    const properties = await fetchProperties();
-    const filteredProperties = properties.filter(property => property.title.trim().toLowerCase().startsWith(searchValue));
-    
-    if (filteredProperties.length > 0) {
-        displayProperties(filteredProperties); // Display only the found properties
-    } else {
-        alert("Property not found.");
-    }
-}
+
 
 // DISPLAY
-async function displayProperties(filteredProperties = null) {
-    console.log('displayProperties called');
+async function displayUsers() {
+    console.log('displayUsers called');
     const dashboard = document.getElementById('dashboard');
     dashboard.innerHTML = ''; // Clear existing content
     
-    const properties = filteredProperties ? filteredProperties : await fetchProperties();
+    const users = await fetchUsers();
 
-    properties.forEach(property => {
-        const propertyDiv = document.createElement('div');
-        propertyDiv.classList.add('property');
+    users.forEach(user => {
+        const userDiv = document.createElement('div');
+        userDiv.classList.add('user');
 
-        propertyDiv.innerHTML = `
-            <h2>${property.title}</h2>
-            <p>Description: ${property.description}</p>
-            <p>Price: ${property.price}</p>
-            <p>Status: ${property.status}</p>
-            <button onclick="removeProperty('${property.title}')">Remove from saved</button>
+        userDiv.innerHTML = `
+            <h2>${user.username}</h2>
+            <p>Role: ${user.role}</p>
+            <p>Suspended: ${user.suspended}</p>
+            <button onclick="showUpdateUserForm('${user.username}')">Update</button>
+            <button onclick="suspendUser('${user.username}')">Suspend</button>
+            <button onclick="unsuspendUser('${user.username}')">Unsuspend</button>
+            
         `;
 
-        dashboard.appendChild(propertyDiv);
+        dashboard.appendChild(userDiv);
     });
 }
+
+//ADD USER ACCOUNT
+async function createUser(event) {
+    const newUser = {
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value,
+        role: document.getElementById('role').value,
+    };
+
+    const response = await fetch(`/myapp/CreateUserBoundary`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+    });
+
+    if (response.ok) {
+        document.getElementById('addUserForm').style.display = 'none';
+        displayUsers(); // Assuming you have a function to display users
+        alert('User added successfully.');
+    } else {
+        alert('Failed to add user.');
+    }
+}
+
+async function showUpdateUserForm(username) {
+    // Fetch the data for the specific user
+    const response = await fetch(`/myapp/ViewUserBoundary?username=${encodeURIComponent(username)}`);
+    const user = await response.json();
+
+    // Pre-fill the form with the current user values
+    document.getElementById('username').value = user.username;
+    document.getElementById('role').value = user.role;
+
+    // Show the form
+    document.getElementById('updateUserForm').style.display = 'block';
+
+    // Add an event listener to the submit button
+    document.getElementById('updateUserSubmitButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        updateUser(username);
+    });
+}
+
+async function updateUser(username) {
+    const updatedUser = {
+        username: document.getElementById('updateUsername').value,
+        role: document.getElementById('updateRole').value,
+    };
+
+    const response = await fetch(`/myapp/UpdateUserBoundary?username=${encodeURIComponent(username)}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedUser),
+    });
+
+    if (response.ok) {
+        document.getElementById('updateUserForm').style.display = 'none';
+        alert('User updated')
+        displayUsers();
+    } else {
+        alert('Failed to update user.');
+    }
+}
+
+async function suspendUser(username) {
+    const response = await fetch('/myapp/SuspendUserBoundary', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `username=${encodeURIComponent(username)}`
+    });
+
+    if (response.ok) {
+        alert('User suspended successfully');
+    } else {
+        alert('Failed to suspend user');
+    }
+
+    // Refresh the user list
+    displayUsers();
+}
+
+async function unsuspendUser(username) {
+    const response = await fetch('/myapp/UnsuspendUserBoundary', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `username=${encodeURIComponent(username)}`
+    });
+
+    if (response.ok) {
+        alert('User unsuspended successfully');
+    } else {
+        alert('Failed to unsuspend user');
+    }
+
+    // Refresh the user list
+    displayUsers();
+}
+
+
+
+
 
 
 function logout() {
@@ -56,15 +154,13 @@ function logout() {
 //Buttons
 document.getElementById('logoutBtn').addEventListener('click', logout);
 
-document.getElementById('searchBtn').addEventListener('click', searchProperties);
-
-document.getElementById('viewAllPropertiesBtn').addEventListener('click', function() {
-    displayProperties();
+document.getElementById('createUserBtn').addEventListener('click', function() {
+    document.getElementById('addUserForm').style.display = 'block';
 });
 
-document.getElementById('reviewsBtn').addEventListener('click', function() {
-    window.location.href = 'PersonalReviews.html';
+document.getElementById('addUserSubmitButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    createUser();
 });
 
-
-
+document.getElementById('viewUsersBtn').addEventListener('click', displayUsers);
