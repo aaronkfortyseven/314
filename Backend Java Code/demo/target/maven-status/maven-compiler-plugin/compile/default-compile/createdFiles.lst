@@ -17,7 +17,10 @@ com/example/Review.class
 com/example/UnsuspendUserBoundary.class
 com/example/CreatePropertyBoundary.class
 com/example/FavPropertyBoundary.class
+com/example/ViewProfileController.class
 com/example/ViewFavouriteController.class
+com/example/Profile.class
 com/example/ViewUserController.class
+com/example/ViewProfileBoundary.class
 com/example/SuspendUserBoundary.class
 com/example/CreateRatingController.class

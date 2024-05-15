@@ -1,0 +1,10 @@
+0:0:0:0:0:0:0:1 - - [15/May/2024:08:52:09 +0800] "POST /myapp/SuspendUserBoundary HTTP/1.1" 200 - http-bio-8080-exec-6 1093
+0:0:0:0:0:0:0:1 - - [15/May/2024:08:52:12 +0800] "GET /myapp/ViewUserBoundary HTTP/1.1" 200 3799 http-bio-8080-exec-6 932
+0:0:0:0:0:0:0:1 - - [15/May/2024:08:52:23 +0800] "POST /myapp/SuspendProfileBoundary HTTP/1.1" 404 1007 http-bio-8080-exec-6 134
+0:0:0:0:0:0:0:1 - - [15/May/2024:08:52:25 +0800] "GET /myapp/ViewProfileBoundary HTTP/1.1" 200 3098 http-bio-8080-exec-6 61
+0:0:0:0:0:0:0:1 - - [15/May/2024:08:52:27 +0800] "POST /myapp/SuspendProfileBoundary HTTP/1.1" 404 1007 http-bio-8080-exec-6 1
+0:0:0:0:0:0:0:1 - - [15/May/2024:08:52:28 +0800] "GET /myapp/ViewProfileBoundary HTTP/1.1" 200 3098 http-bio-8080-exec-6 41
+0:0:0:0:0:0:0:1 - - [15/May/2024:08:52:30 +0800] "POST /myapp/UnsuspendProfileBoundary HTTP/1.1" 404 1011 http-bio-8080-exec-6 2
+0:0:0:0:0:0:0:1 - - [15/May/2024:08:52:32 +0800] "GET /myapp/ViewProfileBoundary HTTP/1.1" 200 3098 http-bio-8080-exec-6 27
+0:0:0:0:0:0:0:1 - - [15/May/2024:08:53:07 +0800] "GET /myapp/ViewUserBoundary HTTP/1.1" 200 3799 http-bio-8080-exec-6 69
+0:0:0:0:0:0:0:1 - - [15/May/2024:08:53:08 +0800] "GET /myapp/ViewUserBoundary HTTP/1.1" 200 3799 http-bio-8080-exec-6 11

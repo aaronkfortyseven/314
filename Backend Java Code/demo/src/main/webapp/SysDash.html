@@ -27,14 +27,14 @@
         <!-- User Add Form -->
         <br>
         <form id="addUserForm" style="display: none;">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username"><br>
+            <label for="accUsername">Username:</label>
+            <input type="text" id="accUsername" name="username"><br>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password"><br>
 
-            <label for="role">Role:</label>
-            <select id="role">
+            <label for="accRole">Role:</label>
+            <select id="accRole">
                 <option value="buyer">Buyer</option>
                 <option value="seller">Seller</option>
                 <option value="agent">Agent</option>
@@ -67,17 +67,67 @@
         </section>
 
 
-        
+<!-- PROFILE -->
         <section id="userProfileManagement">
             <h2>User Profile Management</h2>
             <div class="search-container">
                 <input type="text" id="searchProfileInput" placeholder="Search for user profile...">
                 <button id="searchProfileBtn">Search</button>
             </div>
-            <button id="createProfileBtn">Create Profile</button>
-            <button id="viewProfilesBtn">View Profiles</button>
-            <div id="profileList"></div> <!-- Add this line to display user profiles -->
+            <button id="createProfileButton">Create Profile</button>
+            <button id="viewProfilesButton">View Profiles</button>
+            <div id="profileList"></div> 
+            <!-- Profile Add Form -->
+            <br>
+        <form id="addProfileForm" style="display: none;">
+            <label for="profileUsername">Username:</label>
+            <input type="text" id="profileUsername" name="username"><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br>
+
+            <br>
+
+            <input id="addProfileSubmitButton" type="submit" value="Add Profile">
+        </form>
+
+        <!-- Profile Update Form -->
+        <form id="updateProfileForm" style="display: none;">
+            <label for="updateUsername">Username:</label>
+            <input type="text" id="updateUsername" name="username"><br>
+
+            <label for="updateEmail">Email:</label>
+            <input type="email" id="updateEmail" name="email"><br>
+
+            <label for="updateRole">Role:</label>
+            <select id="updateRole">
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
+                <option value="agent">Agent</option>
+            </select>
+            <br>
+
+            <input id="updateProfileSubmitButton" type="submit" value="Update Profile">
+        </form>
+
         </section>
+
+
+
+
+
+
+
+
+
+
+
+        <div id="dashboard" class="dashboard"></div>
+
+
         <script src="SysDash.js"></script>
         
     </main>
