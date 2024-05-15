@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com/example/FavPropertyController.class
 com/example/CreateRatingBoundary.class
 com/example/Property.class
@@ -24,3 +25,28 @@ com/example/ViewUserController.class
 com/example/ViewProfileBoundary.class
 com/example/SuspendUserBoundary.class
 com/example/CreateRatingController.class
+=======
+com\example\CreateRatingBoundary.class
+com\example\ViewFavouriteBoundary.class
+com\example\ViewUserController.class
+com\example\Rating.class
+com\example\UpdatePropertyBoundary.class
+com\example\ViewUserBoundary.class
+com\example\CreatePropertyBoundary.class
+com\example\UpdateUserBoundary.class
+com\example\SuspendUserBoundary.class
+com\example\CreateRatingController.class
+com\example\UpdateUserController.class
+com\example\ViewFavouriteController.class
+com\example\CreateReviewBoundary.class
+com\example\CreateUserBoundary.class
+com\example\FavPropertyBoundary.class
+com\example\Property.class
+com\example\Review.class
+com\example\FavPropertyController.class
+com\example\UnsuspendUserBoundary.class
+com\example\CreateReviewController.class
+com\example\CreateUserController.class
+com\example\UpdatePropertyController.class
+com\example\CreatePropertyController.class
+>>>>>>> 189ae9355d2718480c5d628c5c9b8e0e889c97e9

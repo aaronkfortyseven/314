@@ -62,21 +62,26 @@ public class User {
     //     return null;
     // }
 
-    public User login(String username, String password) {
-        MongoCollection<Document> collection = database.getCollection("users");
 
-        // Check if the login is successful
-        Document user = collection.find(new Document("username", username)).first();
-        if (user != null) {
-            String dbPassword = user.getString("password");
-            String role = user.getString("role");
-            boolean suspended = user.getBoolean("suspended");
-            if (dbPassword.equals(password) && !suspended) {
-                return new User(username, password, role, suspended);
-            }
+
+
+// Update to Login suspended on 'null'
+public User login(String username, String password) {
+    MongoCollection<Document> collection = database.getCollection("users");
+
+    // Check if the login is successful
+    Document user = collection.find(new Document("username", username)).first();
+    if (user != null) {
+        String dbPassword = user.getString("password");
+        String role = user.getString("role");
+        Boolean suspended = user.getBoolean("suspended"); // This can be null
+
+        if (dbPassword != null && dbPassword.equals(password) && (suspended == null || !suspended)) {
+            return new User(username, password, role, suspended != null ? suspended : false);
         }
-        return null;
     }
+    return null;
+}
 
 
 

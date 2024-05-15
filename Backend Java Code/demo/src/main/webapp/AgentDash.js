@@ -1,4 +1,4 @@
-//current session's username
+// current session's username
 const username = sessionStorage.getItem('username');
 
 // FETCH from the server
@@ -41,7 +41,6 @@ async function displayProperties(filteredProperties = null) {
             <p>Status: ${property.status}</p>
             <button onclick="removeProperty('${property.title}')">Remove</button>
             <button onclick="showUpdatePropertyForm('${property.title}')">Update</button>
-
         `;
 
         dashboard.appendChild(propertyDiv);
@@ -74,17 +73,13 @@ async function removeProperty(title) {
     }
 }
 
-
 // ADD
 function showAddPropertyForm() {
     document.getElementById('addPropertyForm').style.display = 'block';
-    document.getElementById('addSubmitButton').addEventListener('click', function(event) {
-        event.preventDefault();
-        addProperty();
-    });
 }
 
 async function addProperty(event) {
+    event.preventDefault(); // Prevent default form submission
     const newProperty = {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
@@ -103,13 +98,12 @@ async function addProperty(event) {
     });
 
     if (response.ok) {
-        document.getElementById('updatePropertyForm').style.display = 'none';
+        document.getElementById('addPropertyForm').style.display = 'none';
         displayProperties();
     } else {
         alert('Failed to add property.');
     }
 }
-
 
 // UPDATE
 async function showUpdatePropertyForm(title) {
@@ -118,24 +112,19 @@ async function showUpdatePropertyForm(title) {
     const property = await response.json();
 
     // Pre-fill the form with the current property values
-    document.getElementById('title').value = property.title;
-    document.getElementById('description').value = property.description;
-    document.getElementById('price').value = property.price;
-    document.getElementById('location').value = property.location;
-    document.getElementById('status').value = property.status;
-    document.getElementById('agent').value = property.agent;
+    document.getElementById('updateTitle').value = property.title;
+    document.getElementById('updateDescription').value = property.description;
+    document.getElementById('updatePrice').value = property.price;
+    document.getElementById('updateLocation').value = property.location;
+    document.getElementById('updateStatus').value = property.status;
+    document.getElementById('updateAgent').value = property.agent;
 
     // Show the form
     document.getElementById('updatePropertyForm').style.display = 'block';
-
-    // Add an event listener to the submit button
-    document.getElementById('updateSubmitButton').addEventListener('click', function(event) {
-        event.preventDefault();
-        updateProperty(title);
-    });
 }
 
-async function updateProperty(title) {
+async function updateProperty(event) {
+    event.preventDefault(); // Prevent default form submission
     const updatedProperty = {
         title: document.getElementById('updateTitle').value,
         description: document.getElementById('updateDescription').value,
@@ -145,7 +134,7 @@ async function updateProperty(title) {
         agent: document.getElementById('updateAgent').value,
     };
 
-    const response = await fetch(`/myapp/UpdatePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(title)}`, {
+    const response = await fetch(`/myapp/UpdatePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(updatedProperty.title)}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -162,39 +151,30 @@ async function updateProperty(title) {
 }
 
 function logout() {
-    //clears session username
+    // clears session username
     sessionStorage.removeItem('username');
     window.location.href = "login.jsp";
 }
 
 // Display initial properties on page load
-displayProperties();
-
-//Buttons
-document.getElementById('logoutBtn').addEventListener('click', logout);
-
-document.getElementById('searchBtn').addEventListener('click', searchProperties);
-
-document.getElementById('viewAllPropertiesBtn').addEventListener('click', function() {
-    displayProperties();
-});
-
-document.getElementById('addPropertyBtn').addEventListener('click', showAddPropertyForm);
-
-document.getElementById('reviewsBtn').addEventListener('click', function() {
-    window.location.href = 'PersonalReviews.html';
-});
-
-//reusable code for login and back to dashboard replacing each other. 
 document.addEventListener('DOMContentLoaded', (event) => {
+    displayProperties();
+
+    // Event listeners
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+    document.getElementById('searchBtn').addEventListener('click', searchProperties);
+    document.getElementById('viewAllPropertiesBtn').addEventListener('click', displayProperties);
+    document.getElementById('addPropertyBtn').addEventListener('click', showAddPropertyForm);
+    document.getElementById('reviewsBtn').addEventListener('click', function() {
+        window.location.href = 'PersonalReviews.html';
+    });
+    document.getElementById('addSubmitButton').addEventListener('click', addProperty);
+    document.getElementById('updateSubmitButton').addEventListener('click', updateProperty);
+
     const username = sessionStorage.getItem('username');
     if (username) {
         document.getElementById('backToDashboard').style.display = 'inline';
     }
-});
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const username = sessionStorage.getItem('username');
     if (username) {
         document.getElementById('loginLink').style.display = 'none';
     }
