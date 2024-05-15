@@ -28,7 +28,10 @@
         <input type="text" id="updateLocation" name="location">
     
         <label for="updateStatus">Status:</label>
-        <input type="text" id="updateStatus" name="status">
+        <select id="updateStatus">
+            <option value="For Sale">For Sale</option>
+            <option value="Sold">Sold</option>
+        </select>
     
         <label for="updateAgent">Agent:</label>
         <input type="text" id="updateAgent" name="agent">
@@ -62,15 +65,15 @@
         <label for="location">Location:</label>
         <input type="text" id="location" name="location">
     
-        <label for="status">status:</label>
+        <label for="status">Status:</label>
         <select id="status">
             <option value="For Sale">For Sale</option>
             <option value="Sold">Sold</option>
         </select>
     
-        <!-- <label for="agent">Agent:</label>
+        <label for="agent">Agent:</label>
         <input type="text" id="agent" name="agent">
-     -->
+    
         <input id="addSubmitButton" type="submit" value="Add Property">
     </form>
 
