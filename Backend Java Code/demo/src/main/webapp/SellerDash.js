@@ -41,8 +41,10 @@ async function displayProperties(filteredProperties = null) {
             <p>Status: ${property.status}</p>
             <p>Views: ${property.views}</p>
             <p>Shortlisted: ${property.shortlisted}</p>
-            <button onclick="removeProperty('${property.title}')">Remove from saved</button>
         `;
+
+        // removed this
+        //<button onclick="removeProperty('${property.title}')">Remove from saved</button>
 
         dashboard.appendChild(propertyDiv);
     });
