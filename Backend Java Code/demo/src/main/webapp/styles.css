@@ -26,7 +26,10 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    body {
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    }
 }
 header {
     background-color: #005580;
@@ -34,6 +37,22 @@ header {
     padding: 20px;
     margin-bottom: 15px;
 }
+.header-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.header-content h1 {
+    margin: 0;
+}
+
+.logo {
+    height: 70px;
+    width: auto;
+    margin-right: 20px; /* Adds a 20px margin to the right of the logo */
+    padding: 0;
+}
+
 nav {
     background-color: #e6e6e6;
     padding: 15px;
@@ -219,6 +238,28 @@ span {
     font-size: 12px;
 }
 
+.property-showcase {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.property-showcase figure {
+    width: 30%;
+    text-align: center;
+}
+
+.property-image {
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.login-link {
+    font-size: 1.5em; /* Makes the text 1.5 times larger than the surrounding text */
+    color: #0000ff
+    font-weight: bold; 
+}
 
 
 

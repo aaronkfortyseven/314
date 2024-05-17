@@ -9,7 +9,11 @@
 <body>
     <!-- Header -->
     <header>
-        <h1>Singapore's best real deals!</h1>
+        <div class="header-content">
+            <img src="images/groot.jpeg" alt="Logo" class="logo">
+            <h1>Property Groot - Singapore's best real estate deals!</h1>
+            <button id="logoutBtn" style="display: none;">Logout</button>
+        </div>
     </header>
 
     <!-- Navigation -->

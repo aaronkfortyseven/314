@@ -85,11 +85,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('toggleStatus').addEventListener('change', searchProperties);
 });
 
+function logout() {
+    //clears session username
+    sessionStorage.removeItem('username');
+    window.location.href = "login.jsp";
+}
+
+document.getElementById('logoutBtn').addEventListener('click', logout);
+
 // Handle login and back to dashboard
 document.addEventListener('DOMContentLoaded', (event) => {
     const username = sessionStorage.getItem('username');
     if (username) {
-        document.getElementById('backToDashboard').style.display = 'inline';
+        document.getElementById('logoutBtn').style.display = 'inline';
         document.getElementById('loginLink').style.display = 'none';
     }
 });
