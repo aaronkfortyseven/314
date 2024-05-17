@@ -10,10 +10,11 @@ async function fetchProperties() {
 }
 
 // SEARCH
+// SEARCH
 async function searchProperties() {
     const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
-    const properties = await fetchProperties();
-    const filteredProperties = properties.filter(property => property.title.trim().toLowerCase().startsWith(searchValue));
+    const favourites = await fetchFavourites(); // Fetch favorites instead of all properties
+    const filteredProperties = favourites.filter(property => property.title.trim().toLowerCase().includes(searchValue));
     
     if (filteredProperties.length > 0) {
         displayProperties(filteredProperties); // Display only the found properties
@@ -21,6 +22,7 @@ async function searchProperties() {
         alert("Property not found.");
     }
 }
+
 
 // DISPLAY
 async function displayProperties(filteredProperties = null) {
@@ -93,13 +95,10 @@ function logout() {
 
 //Buttons
 document.getElementById('logoutBtn').addEventListener('click', logout);
-
-document.getElementById('searchBtn').addEventListener('click', searchProperties);
-
+document.getElementById('searchBtn').addEventListener('click', searchProperties); // Add event listener for search button
 document.getElementById('viewFavBtn').addEventListener('click', function() {
     displayFavourites();
 });
-
 document.getElementById('reviewsBtn').addEventListener('click', function() {
     window.location.href = 'PersonalReviews.html';
 });

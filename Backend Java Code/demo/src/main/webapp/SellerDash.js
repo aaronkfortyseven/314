@@ -12,8 +12,8 @@ async function fetchProperties() {
 // SEARCH
 async function searchProperties() {
     const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
-    const properties = await fetchProperties();
-    const filteredProperties = properties.filter(property => property.title.trim().toLowerCase().startsWith(searchValue));
+    const favourites = await fetchFavourites(); // Fetch favorites instead of all properties
+    const filteredProperties = favourites.filter(property => property.title.trim().toLowerCase().includes(searchValue));
     
     if (filteredProperties.length > 0) {
         displayProperties(filteredProperties); // Display only the found properties
@@ -21,6 +21,7 @@ async function searchProperties() {
         alert("Property not found.");
     }
 }
+
 
 // DISPLAY
 async function displayProperties(filteredProperties = null) {
