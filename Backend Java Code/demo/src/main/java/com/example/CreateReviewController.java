@@ -3,8 +3,8 @@ package com.example;
 import org.bson.Document;
 
 public class CreateReviewController {
-    public void createReview(String username, Document newReview) {
+    public void createReview(String name, Document newReview) {
         Review review = new Review();
-        review.addReview(username, newReview);
+        review.addReview(name, newReview);
     }
 }

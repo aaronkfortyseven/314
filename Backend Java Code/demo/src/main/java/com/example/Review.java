@@ -25,10 +25,10 @@ public class Review {
         this.collection = database.getCollection("reviews");
     }
 
-    public void addReview(String username, Document newReview) {
+    public void addReview(String name, Document newReview) {
         String reviewText = newReview.getString("review");
         collection.updateOne(
-            Filters.eq("username", username), 
+            Filters.eq("name", name), 
             Updates.push("reviews", reviewText)
         );
     }

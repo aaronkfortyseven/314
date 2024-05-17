@@ -57,7 +57,7 @@
     var loginError = "<%=session.getAttribute("loginError")%>";
     if (loginError && loginError === "true") {
         // Show a popup
-        alert("Invalid username or password.");
+        alert("Invalid username or password or account suspended");
         // Remove the flag from the session
         <%
             session.removeAttribute("loginError");

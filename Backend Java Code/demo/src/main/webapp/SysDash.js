@@ -73,8 +73,8 @@ async function showUpdateUserForm(username) {
     const user = await response.json();
 
     // Pre-fill the form with the current user values
-    document.getElementById('username').value = user.username;
-    document.getElementById('role').value = user.role;
+    document.getElementById('updateUsername').value = user.username;
+    document.getElementById('updateRole').value = user.role;
 
     // Show the form
     document.getElementById('updateUserForm').style.display = 'block';
@@ -163,7 +163,7 @@ async function fetchProfiles() {
 
 // SEARCH
 async function searchProfiles() {
-    const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
+    const searchValue = document.getElementById('searchProfileInput').value.trim().toLowerCase();
     const profiles = await fetchProfiles();
     const filteredProfiles = profiles.filter(profile => profile.username.trim().toLowerCase().includes(searchValue));
     
@@ -190,12 +190,14 @@ async function displayProfiles(filteredProfiles = null) {
             <h2>${profile.username}</h2>
             <p>Email: ${profile.email}</p>
             <p>Name: ${profile.name}</p>
-            ${profile.favProperties ? `<p>Favourite Properties: ${profile.favProperties.join(', ')}</p>` : ''}
+            ${profile.favProperties ? `<p>Favourite Properties: ${profile.favProperties.map(property => property.title).join(', ')}</p>` : ''}
             <p>Suspended: ${profile.suspended}</p>
             <button onclick="showUpdateProfileForm('${profile.username}')">Update</button>
             <button onclick="suspendProfile('${profile.username}')">Suspend</button>
             <button onclick="unsuspendProfile('${profile.username}')">Unsuspend</button>
         `;
+
+        //${profile.favProperties ? `<p>Favourite Properties: ${profile.favProperties.join(', ')}</p>` : ''}
     
         dashboard.appendChild(profileDiv);
     });
@@ -230,17 +232,6 @@ async function createProfile(event) {
 
 //PROFILE UPDATE--------------------------------------------------
 async function showUpdateProfileForm(username) {
-    // Fetch the data for the specific profile
-    const response = await fetch(`/myapp/ViewProfileBoundary?username=${encodeURIComponent(username)}`);
-    const profile = await response.json();
-
-    // Pre-fill the form with the current profile values
-    document.getElementById('profileUsername').value = profile.username;
-    document.getElementById('profileEmail').value = profile.email;
-    document.getElementById('profileName').value = profile.name;
-    document.getElementById('profileFavProperties').value = profile.favProperties;
-    document.getElementById('profileSuspended').value = profile.suspended;
-
     // Show the form
     document.getElementById('updateProfileForm').style.display = 'block';
 
@@ -256,8 +247,6 @@ async function updateProfile(username) {
         username: document.getElementById('updateProfileUsername').value,
         email: document.getElementById('updateProfileEmail').value,
         name: document.getElementById('updateProfileName').value,
-        favProperties: document.getElementById('updateProfileFavProperties').value,
-        suspended: document.getElementById('updateProfileSuspended').value,
     };
 
     const response = await fetch(`/myapp/UpdateProfileBoundary?username=${encodeURIComponent(username)}`, {
@@ -358,6 +347,12 @@ document.getElementById('viewProfilesButton').addEventListener('click', function
 });
 
 document.getElementById('searchProfileButton').addEventListener('click', searchProfiles);
+
+document.getElementById('updateProfileSubmitButton').addEventListener('click', function(event) {
+    event.preventDefault();
+    var username = document.getElementById('updateProfileUsername').value;
+    updateProfile(username);
+});
 
 
 function logout() {

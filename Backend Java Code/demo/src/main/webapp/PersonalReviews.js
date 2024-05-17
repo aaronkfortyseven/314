@@ -1,6 +1,8 @@
 //current session's username
 const username = sessionStorage.getItem('username');
 
+
+// this might not be good with 100+ agents
 const nameToUsername = {
     "John": "agent_user",
     "Emma": "agent_user2",

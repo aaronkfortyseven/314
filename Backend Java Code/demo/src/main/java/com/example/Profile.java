@@ -38,10 +38,31 @@ public class Profile {
         return profiles;
     }
 
-    public void editProfile(String title, Document updatedProfile) {
+    public void editProfile(String username, Document updatedProfile) {
         collection.updateOne(
-            Filters.eq("title", title),
+            Filters.eq("username", username),
             new Document("$set", updatedProfile)
         );
+    }
+
+
+
+    public boolean suspendProfile(String username) {
+        Document updatedProfile = new Document("suspended", true);
+        UpdateResult result = collection.updateOne(
+            Filters.eq("username", username),
+            new Document("$set", updatedProfile)
+        );
+        return result.getModifiedCount() > 0;
+    }
+    
+
+    public boolean unsuspendProfile(String username) {
+        Document updatedProfile = new Document("suspended", false);
+        UpdateResult result = collection.updateOne(
+            Filters.eq("username", username),
+            new Document("$set", updatedProfile)
+        );
+        return result.getModifiedCount() > 0;
     }
 }
