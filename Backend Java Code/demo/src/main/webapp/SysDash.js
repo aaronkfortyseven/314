@@ -48,6 +48,7 @@ async function createUser(event) {
         username: document.getElementById('accUsername').value,
         password: document.getElementById('password').value,
         role: document.getElementById('accRole').value,
+        suspended: false,
     };
 
     const response = await fetch(`/myapp/CreateUserBoundary`, {
