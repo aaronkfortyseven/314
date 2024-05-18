@@ -2,11 +2,19 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // FETCH from the server
     async function fetchProperties() {
-        const username = sessionStorage.getItem('username');
-        const response = await fetch(`/myapp/ViewPropertyBoundary?username=${username}`);
-        const properties = await response.json();
-        return properties;
+        try {
+            const username = sessionStorage.getItem('username');
+            const response = await fetch(`/myapp/ViewPropertyBoundary?username=${username}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch properties.');
+            }
+            const properties = await response.json();
+            return properties;
+        } catch (error) {
+            throw new Error('Failed to fetch properties: ' + error.message);
+        }
     }
+    
 
     // SEARCH
     async function searchProperties() {
@@ -22,47 +30,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // DISPLAY
- async function displayProperties(filteredProperties = null) {
-    try {
-        const dashboard = document.getElementById('dashboard');
-        dashboard.innerHTML = ''; // Clear existing content
-        
-        const properties = filteredProperties ? filteredProperties : await fetchProperties();
-
-        properties.forEach(property => {
-            const propertyDiv = document.createElement('div');
-            propertyDiv.classList.add('property');
-
-            propertyDiv.innerHTML = `
-                <h2>${property.title}</h2>
-                <p>Description: ${property.description}</p>
-                <p>Price: ${property.price}</p>
-                <p>Status: ${property.status}</p>
-                <button class="remove-btn">Remove</button>
-                <button class="update-btn">Update</button>
-            `;
+    async function displayProperties() {
+        try {
+            const dashboard = document.getElementById('dashboard');
+            dashboard.innerHTML = ''; // Clear existing content
             
-            dashboard.appendChild(propertyDiv);
-
-            // Attach event listener to the remove button
-            propertyDiv.querySelector('.remove-btn').addEventListener('click', () => {
-                // Ask for confirmation before removing
-                const confirmRemoval = window.confirm("Are you sure you want to remove this property?");
-                if (confirmRemoval) {
-                    removeProperty(property.title);
-                }
-            });
-
-            // Attach event listener to the update button
-            propertyDiv.querySelector('.update-btn').addEventListener('click', () => {
-                showUpdatePropertyForm(property.title);
-            });
-        });
-    } catch (error) {
-        console.error(error);
-        alert('Failed to display properties: ' + error.message);
+            const properties = await fetchProperties();
+    
+            if (Array.isArray(properties)) {
+                properties.forEach(property => {
+                    const propertyDiv = document.createElement('div');
+                    propertyDiv.classList.add('property');
+        
+                    propertyDiv.innerHTML = `
+                        <h2>${property.title}</h2>
+                        <p>Description: ${property.description}</p>
+                        <p>Price: ${property.price}</p>
+                        <p>Status: ${property.status}</p>
+                        <button class="remove-btn">Remove</button>
+                        <button class="update-btn">Update</button>
+                    `;
+                    
+                    dashboard.appendChild(propertyDiv);
+        
+                    // Attach event listener to the remove button
+                    propertyDiv.querySelector('.remove-btn').addEventListener('click', () => {
+                        // Ask for confirmation before removing
+                        const confirmRemoval = window.confirm("Are you sure you want to remove this property?");
+                        if (confirmRemoval) {
+                            removeProperty(property.title);
+                        }
+                    });
+        
+                    // Attach event listener to the update button
+                    propertyDiv.querySelector('.update-btn').addEventListener('click', () => {
+                        showUpdatePropertyForm(property.title);
+                    });
+                });
+            } else {
+                // Handle the case where properties is not an array
+                throw new Error('Properties data is not in the expected format.');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Failed to display properties: ' + error.message);
+        }
     }
-}
+    
 
 
 
@@ -150,17 +164,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // UPDATE
     async function showUpdatePropertyForm(title) {
         try {
             const username = sessionStorage.getItem('username');
+            if (!username) {
+                throw new Error('User not authenticated.');
+            }
+            
+            // Fetch property details from the server
             const response = await fetch(`/myapp/ViewPropertyBoundary?username=${username}&propertyTitle=${encodeURIComponent(title)}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch property details.');
             }
-    
+            
             const property = await response.json();
-    
+            
             // Fill the form fields with property details
             document.getElementById('updateTitle').value = property.title || '';
             document.getElementById('updateDescription').value = property.description || '';
@@ -168,21 +186,22 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('updateLocation').value = property.location || '';
             document.getElementById('updateStatus').value = property.status || '';
             document.getElementById('updateAgent').value = property.agent || '';
-    
-            // Show the form
-            document.getElementById('updatePropertyForm').style.display = 'block';
-    
+            
+            // Show the update form
+            const updateForm = document.getElementById('updatePropertyForm');
+            updateForm.style.display = 'block';
+            
             // Hide other forms
             document.getElementById('addPropertyForm').style.display = 'none';
-    
+            
             // Set focus on the first input field
             document.getElementById('updateTitle').focus();
         } catch (error) {
             console.error(error);
-            alert('Failed to fetch property details.');
+            alert('Failed to fetch property details.'); // Display a generic error message
         }
     }
-
+    
 
     // Function to update a property
     async function updateProperty(event) {
