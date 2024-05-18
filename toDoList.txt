@@ -1,2 +1,0 @@
-- Figure out image storing on mongoDB(or other methods/optional)
-- 
