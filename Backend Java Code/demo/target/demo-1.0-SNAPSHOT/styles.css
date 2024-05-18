@@ -1,0 +1,266 @@
+/* main */
+#dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.property {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.property h2 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.property p {
+    margin: 0 0 10px 0;
+    color: #666;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color: #ffffff; */
+    body {
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    }
+}
+header {
+    background-color: #005580;
+    color: white;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+.header-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.header-content h1 {
+    margin: 0;
+}
+
+.logo {
+    height: 70px;
+    width: auto;
+    margin-right: 20px; /* Adds a 20px margin to the right of the logo */
+    padding: 0;
+}
+
+nav {
+    background-color: #e6e6e6;
+    padding: 15px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+}
+main {
+    padding: 20px;
+    margin-bottom: 10px;
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* Search bar */
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-form input[type="text"],
+.search-form select {
+    width: 20%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.search-form input[type="submit"] {
+    width: 10%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-form input[type="submit"]:hover {
+    background-color: darkred;
+}
+
+
+
+/* Mortgage Calculator */
+.calculator-input {
+    margin-bottom: 10px;
+}
+.calculator-input label {
+    display: block;
+}
+.calculator-input input {
+    width: 30%;
+    padding: 5px;
+}
+
+
+/* login page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* General styling */
+.hero {
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    position: absolute;
+}
+
+.form-box {
+    width: 400px;
+    height: 480px;
+    position: relative;
+    margin: 2% auto;
+    background: #fff;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.button-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    margin-top: 35px auto;
+    position: relative;
+    border-radius: 30px;
+}
+
+.toggle-btn {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+
+#btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 25%;
+    overflow: hidden; /* Clip the overflow */
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border-radius: 30px;
+    transition: .2s;
+}
+
+
+.input-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    transition: .5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-field {
+    width:100%; /* Adjusted width to match password input box */
+    padding: 10px 0;
+    margin:  5px 0;
+    border-left:0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: #ffffff;
+    color: #050505; /* Text color */
+}
+
+.submit-btn {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.check-box {
+    margin-right: 10px; /* Add some space between checkbox and text */
+}
+
+span {
+    color: #777;
+    font-size: 12px;
+}
+
+.property-showcase {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.property-showcase figure {
+    width: 30%;
+    text-align: center;
+}
+
+.property-image {
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.login-link {
+    font-size: 1.5em; /* Makes the text 1.5 times larger than the surrounding text */
+    color: #0000ff
+    font-weight: bold; 
+}
+
+
+
+

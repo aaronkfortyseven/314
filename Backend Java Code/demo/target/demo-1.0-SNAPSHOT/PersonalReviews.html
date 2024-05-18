@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <img src="images/groot.jpeg" alt="Logo" class="logo">
+            <h1>Property Groot - Singapore's best real estate deals!</h1>
+            <button id="logoutBtn" style="display: none;">Logout</button>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="listings.html">Property Listings</a></li>
+            <li><a href="calculator.html">Mortgage Calculator</a></li>
+            <li><a href="PersonalReviews.html">Agent Reviews</a></li>
+            <li><a id="loginLink" href="login.jsp">Login</a></li>
+            
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+<section>
+<!-- Agent Reviews -->
+    <div class="agent-reviews">
+        <h2>Agent Reviews. See reviews for our top agents: John, Emma or Michael!</h2><br>
+        <input type="text" id="searchBar" placeholder="Search for an agent">
+        <button id="searchButton">Search</button>
+        <div id="averageRating"></div><br>
+        <div id="reviews"></div>
+    </div>
+</section>
+
+<section>
+    <h2>Leave a review and rating for your agent.</h2><br>
+    <form id="reviewForm">
+        <label for="agentName">Agent's name:</label>
+        <input id="agentName" type="text"><br>
+        <label for="reviewText">Your review:</label>
+        <textarea id="reviewText"></textarea><br>
+
+        <button type="submit" id="addReviewButton">Submit Review</button><br>
+    </form>
+        
+    <form id="ratingForm" onsubmit="event.preventDefault(); addRating();">
+        <div class="rating">
+            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Poor">1 star</label>
+            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Fair">2 stars</label>
+            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Good">3 stars</label>
+            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Very Good">4 stars</label>
+            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding">5 stars</label>
+        </div>
+        <input type="submit" value="Submit Rating"><br><br>
+    </form>
+    </section>
+
+
+    <div id="dashboard" class="dashboard"></div>
+    <script src="PersonalReviews.js"></script>
+<style>
+    #averageRating {
+    /* Styles for the average rating section */
+    background-color: #f8f8f8;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5em; /* Make the text larger */
+    font-weight: bold; /* Make the text bold */
+}
+
+#reviews {
+    /* Styles for the reviews section */
+    background-color: #fff;
+    padding: 10px;
+    clear: both;
+    max-height: 500px; /* Adjust this value as needed */
+    overflow: auto;
+}
+
+.review {
+    /* Styles for each review */
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+</style>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Real Estate Website. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

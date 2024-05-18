@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
     
             // Make a POST request to update the property
-            const response = await fetch(`/myapp/UpdatePropertyBoundary?username=${encodeURIComponent(username)}`, {
+            const response = await fetch(`/myapp/UpdatePropertyBoundary?username=${encodeURIComponent(username)}&propertyTitle=${encodeURIComponent(updatedProperty.title)}`, {
                 method: 'POST', // Change method to POST
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,5 +1,0 @@
-0:0:0:0:0:0:0:1 - - [04/May/2024:00:04:48 +0800] "GET /Reviews.html HTTP/1.1" 304 - http-bio-8080-exec-1 60
-0:0:0:0:0:0:0:1 - - [04/May/2024:00:04:48 +0800] "GET /styles.css HTTP/1.1" 304 - http-bio-8080-exec-2 6
-0:0:0:0:0:0:0:1 - - [04/May/2024:00:04:48 +0800] "GET /Reviews.js HTTP/1.1" 304 - http-bio-8080-exec-3 16
-0:0:0:0:0:0:0:1 - - [04/May/2024:00:04:49 +0800] "GET /myapp/ViewReviewBoundary?username=agent_user HTTP/1.1" 200 472 http-bio-8080-exec-5 964
-0:0:0:0:0:0:0:1 - - [04/May/2024:00:04:49 +0800] "GET /myapp/ViewRatingBoundary?username=agent_user HTTP/1.1" 200 13 http-bio-8080-exec-4 947

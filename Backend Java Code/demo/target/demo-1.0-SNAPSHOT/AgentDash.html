@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Agent Dashboard</title>
+    <link rel="stylesheet" href="AgentDash.css">
+</head>
+<body>
+    <header>
+        <h1>Real Estate Agent Dashboard</h1>
+        <button id="logoutBtn">Logout</button>
+        <button id="reviewsBtn">View my reviews</button>
+    </header>
+
+    <!-- Property Update Form -->
+    <form id="updatePropertyForm" style="display: none;">
+        <label for="updateTitle">Title:</label>
+        <input type="text" id="updateTitle" name="title">
+    
+        <label for="updateDescription">Description:</label>
+        <input type="text" id="updateDescription" name="description">
+    
+        <label for="updatePrice">Price:</label>
+        <input type="text" id="updatePrice" name="price">
+    
+        <label for="updateLocation">Location:</label>
+        <input type="text" id="updateLocation" name="location">
+    
+        <label for="updateStatus">Status:</label>
+        <select id="updateStatus">
+            <option value="For Sale">For Sale</option>
+            <option value="Sold">Sold</option>
+        </select>
+    
+        <label for="updateAgent">Agent:</label>
+        <input type="text" id="updateAgent" name="agent">
+    
+        <input id="updateSubmitButton" type="submit" value="Update Property">
+    </form>
+
+    <!-- Search bar and buttons container -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by property title...">
+        <button id="searchBtn">Search</button>
+        <div class="button-container">
+            <button id="addPropertyBtn">Add Property</button>
+            <button id="viewAllPropertiesBtn">View All Properties</button>
+        </div>
+    </div>
+
+    <div id="dashboard" class="dashboard"></div>
+
+    <!-- Property Add Form -->
+    <form id="addPropertyForm" style="display: none;">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title">
+    
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description">
+    
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price">
+    
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location">
+    
+        <label for="status">Status:</label>
+        <select id="status">
+            <option value="For Sale">For Sale</option>
+            <option value="Sold">Sold</option>
+        </select>
+        
+    <!-- Add the "agent" field -->
+    <label for="agent">Agent:</label>
+    <input type="text" id="agent" name="agent">
+
+        <input id="addSubmitButton" type="submit" value="Add Property">
+    </form>
+
+    <script src="AgentDash.js"></script>
+</body>
+</html>
