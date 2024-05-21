@@ -254,12 +254,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const property = await response.json();
     
         // Pre-fill the form with the current property values
-        document.getElementById('title').value = property.title;
-        document.getElementById('description').value = property.description;
-        document.getElementById('price').value = property.price;
-        document.getElementById('location').value = property.location;
-        document.getElementById('status').value = property.status;
-        document.getElementById('agent').value = property.agent;
+        // document.getElementById('title').value = property.title;
+        // document.getElementById('description').value = property.description;
+        // document.getElementById('price').value = property.price;
+        // document.getElementById('location').value = property.location;
+        // document.getElementById('status').value = property.status;
+        // document.getElementById('agent').value = property.agent;
     
         // Show the form
         document.getElementById('updatePropertyForm').style.display = 'block';
