@@ -17,11 +17,19 @@ public class UpdatePropertyBoundary extends HttpServlet {
         this.updatePropertyController = new UpdatePropertyController();
     }
 
+    // protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    //     String username = request.getParameter("username");
+    //     String propertyTitle = request.getParameter("propertyTitle");
+    //     Document updatedProperty = new Gson().fromJson(request.getReader(), Document.class);
+
+    //     updatePropertyController.updateProperty(username, propertyTitle, updatedProperty);
+    // }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
-        String propertyTitle = request.getParameter("propertyTitle");
+        String originalTitle = request.getParameter("propertyTitle");
         Document updatedProperty = new Gson().fromJson(request.getReader(), Document.class);
-
-        updatePropertyController.updateProperty(username, propertyTitle, updatedProperty);
+    
+        updatePropertyController.updateProperty(username, originalTitle, updatedProperty);
     }
 }

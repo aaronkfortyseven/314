@@ -34,6 +34,7 @@ async function searchProperties() {
 // DISPLAY
 async function displayProperties(properties) {
     console.log('displayProperties called');
+    console.log(properties);
     const dashboard = document.getElementById('dashboard');
     dashboard.innerHTML = ''; // Clear existing content
     
@@ -43,6 +44,12 @@ async function displayProperties(properties) {
     }
 
     properties.forEach(property => {
+
+    // Check if the property has all necessary properties and they are not empty
+    if (!property.title || !property.description || !property.price || !property.status) {
+        return; // Skip this iteration and move to the next property
+    }
+
         const propertyDiv = document.createElement('div');
         propertyDiv.classList.add('property');
 
@@ -100,7 +107,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('logoutBtn').style.display = 'inline';
         document.getElementById('loginLink').style.display = 'none';
     }
+
+    displayProperties();
 });
 
 
-displayProperties();

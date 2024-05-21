@@ -42,9 +42,15 @@ public class Property {
     }
 
     //check that it doesn't clear out agent field in .js
-    public void editProperty(String agent, String propertyTitle, Document updatedProperty) {
+    // public void editProperty(String agent, String propertyTitle, Document updatedProperty) {
+    //     collection.updateOne(
+    //         Filters.and(Filters.eq("agent", agent), Filters.eq("title", propertyTitle)),
+    //         new Document("$set", updatedProperty)
+    //     );
+    // }
+    public void editProperty(String agent, String originalTitle, Document updatedProperty) {
         collection.updateOne(
-            Filters.and(Filters.eq("agent", agent), Filters.eq("title", propertyTitle)),
+            Filters.and(Filters.eq("agent", agent), Filters.eq("title", originalTitle)),
             new Document("$set", updatedProperty)
         );
     }
