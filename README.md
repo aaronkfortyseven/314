@@ -3,6 +3,8 @@
 
 A real estate website.
 
+Code design with OOP and using a BCE framework.
+
 Logging in with different roles:
 Buyer
 Seller
