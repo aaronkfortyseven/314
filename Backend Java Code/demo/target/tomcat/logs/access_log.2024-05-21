@@ -219,3 +219,7 @@
 0:0:0:0:0:0:0:1 - - [21/May/2024:11:17:58 +0800] "GET /myapp/ViewPropertyBoundary?username=agent_user HTTP/1.1" 200 767 http-bio-8080-exec-6 18
 0:0:0:0:0:0:0:1 - - [21/May/2024:11:18:05 +0800] "DELETE /myapp/RemovePropertyBoundary?username=agent_user&propertyTitle=1 HTTP/1.1" 200 - http-bio-8080-exec-6 139
 0:0:0:0:0:0:0:1 - - [21/May/2024:11:18:05 +0800] "GET /myapp/ViewPropertyBoundary?username=agent_user HTTP/1.1" 200 573 http-bio-8080-exec-2 20
+0:0:0:0:0:0:0:1 - - [21/May/2024:16:14:32 +0800] "GET /AgentDash.html HTTP/1.1" 304 - http-bio-8080-exec-4 62
+0:0:0:0:0:0:0:1 - - [21/May/2024:16:14:32 +0800] "GET /AgentDash.js HTTP/1.1" 200 14448 http-bio-8080-exec-5 20
+0:0:0:0:0:0:0:1 - - [21/May/2024:16:14:33 +0800] "GET /myapp/ViewPropertyBoundary?username=agent_user HTTP/1.1" 200 573 http-bio-8080-exec-5 690
+0:0:0:0:0:0:0:1 - - [21/May/2024:16:14:35 +0800] "GET /login.jsp HTTP/1.1" 200 2857 http-bio-8080-exec-9 34
